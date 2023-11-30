@@ -13,26 +13,54 @@ const fileContents = (rootDir, filenameSegment, extension) => readFileSync(`./${
 // Check if the source file to be injected have the comments
 // This runs after typedoc builds the docs
 
-const reComment = /(<!-- TSDOC_START -->)[\s\S]*?(<!-- TSDOC_END -->)$/gm;
-const replace = data => `<!-- TSDOC_START -->\n\n${data}\n<!-- TSDOC_END -->`;
+const markdownHeadingEmojiMap = {
+    '### Functions': ':toolbox:',
+    'Module\:': ':package:',
+    '## Table of contents': ':scroll:',
+    '### Parameters': ':abacus:',
+    '#### Returns': ':back:',
+    '#### Defined in': ':memo:'
+}
+
+const reHtmlComment = /(<!-- TSDOC_START -->)[\s\S]*?(<!-- TSDOC_END -->)$/gm;
+const replace = data => `\n${data}\n`;
 
 
 const generateDocs = (filenameSegment) => {
-    const tempFile = fileContents(`temp/modules`,
+    let tempFile = fileContents(`temp/modules`,
         filenameSegment, `md`)
-    const destFile = fileContents(`docs`, filenameSegment, `mdx`)
-    if (destFile.match(reComment)) {
+    let destFile = fileContents(`templates`, filenameSegment, `mdx`)
+    if (destFile.match(reHtmlComment)) {
+
+        console.log(`[info] Adding emojis in ${filenameSegment}.md`)
+        const re = pattern => new RegExp(pattern, 'gi')
+
+        for (const heading of Object.keys(markdownHeadingEmojiMap)) {
+
+            tempFile = tempFile.replace(re(heading), `${heading}${markdownHeadingEmojiMap[heading]}`)
+        }
+        tempFile = tempFile.replace(/\*\*`Description`\*\*/g, '**`Description`** :information_source:'
+        )
+
+        tempFile = tempFile.replace(/\*\*`Example`\*\*/g, '**`Example`** :clipboard:'
+        )
+
+        tempFile = tempFile.replace(/\*\*`Function`\*\*/g, ''
+        )
 
         writeFileSync(`./docs/${filenameSegment}.mdx`,
             // This is the source .mdx file in ./docs we're writing to
-            destFile.replace(reComment, replace(tempFile)), 'utf-8');
-
+            destFile.replace(reHtmlComment, replace(tempFile)), 'utf-8');
         return
     } else {
         writeFileSync(destFile, tempFile, 'utf-8')
     }
 }
 
+
 for (const pathSeg of pathSegments) {
+
     generateDocs(pathSeg)
 }
+
+console.log(`Done`)

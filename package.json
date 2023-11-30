@@ -36,7 +36,7 @@
     "typescript": "^5.3.2"
   },
   "scripts": {
-    "docs": "npx typedoc --plugin typedoc-plugin-markdown  && node docs.cjs && git add .",
+    "docs": "npx typedoc --plugin typedoc-plugin-markdown  && rm -r docs  && mkdir docs && node docs.cjs && git add .",
     "build": " node build.cjs",
     "prepare": " npm run build && npm run types",
     "types": "dts-bundle-generator -o ./dist/index.d.ts ./src/index.ts",

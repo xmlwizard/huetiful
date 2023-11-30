@@ -1,0 +1,30 @@
+---
+title: Colors.
+date: '2023-09-29'
+draft: false
+summary: Functions for returning static swatches and getting other color related information.
+layout: PostSimple
+canonicalUrl: https://huetiful-docs.vercel.app/api/colors
+---
+
+### :gear:The **tailwindColors** wrapper
+
+The library comes along with the default TailwindCSS palette in the form of a curried wrapper function that takes the Tailwind shade as its first parameter and the value i.e _500_ as the second parameter.
+
+## Colorbrewer color scales
+
+There are 3 optios for colorBrewer schemes and they are packaged as stand alone wrapper functions which return different palettes that in different color options. The scheme options vary per scheme but the library has autocomplete support in code editors for all the available options.
+
+All the fuctions take one parameter, `scheme` and return an array of colors or throw an error if an invalid scheme is passed in.
+
+Below is the generic type definition of the functions.
+
+Colors can be classified into warm and cool colors which in turn have ranges(in Kelvins). For example blue is a cool color and the blue hue is found within a certain numerical range (degrees if we are looking at the _hue_ channel). Using assumptions such as these allows us to determine which colors we want in our designs.
+
+> Remember that color temperature makes sense for color which is near white and may throw figures that don't make sense when used with other colors.
+
+We can use _isWarm_ and _isCool_ to determine if a color is approximately warm or cool. The utilities rely on _hue_ ranges to determine the temperature of the color.
+
+<!-- TSDOC_START -->
+
+<!-- TSDOC_END -->

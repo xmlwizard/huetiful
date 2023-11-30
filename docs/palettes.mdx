@@ -11,17 +11,14 @@ A small collection of functions to help you kickstart your designs using mostly 
 
 Because certain end results are easier to achieve in different color spaces, colors are converted to a mode that is suited for the desired and result. For example pastel colors have a high `value` and low `saturation` there are easier to compute in the HSV color space. But for the most part colors are converted to LCH and then returned as optional hex strings or plain color objects.
 
-### API
 
+[huetiful-js](../README.md) / palettes
 
+# Module::package: palettes
 
-[huetiful](../README.md) / palettes
+## Table of contents:scroll:
 
-# Module: palettes
-
-## Table of contents
-
-### Functions
+### Functions:toolbox:
 
 - [base](palettes.md#base)
 - [discoverPalettes](palettes.md#discoverpalettes)
@@ -38,13 +35,13 @@ Because certain end results are easier to achieve in different color spaces, col
 
 ▸ **base**(`scheme`): (`color`: [`Color`](paramTypes.md#color), `easingFunc`: (`t`: `number`) => `number`) => [`Color`](paramTypes.md#color)[]
 
-#### Parameters
+#### Parameters:abacus:
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `scheme` | ``"analogous"`` \| ``"triadic"`` \| ``"tetradic"`` \| ``"complementary"`` | Any classic color scheme either "analogous"\|"triadic"\|"tetradic"\|"complementary"\|"splitComplementary". |
 
-#### Returns
+#### Returns:back:
 
 `fn`
 
@@ -52,24 +49,24 @@ An array of 8 character hex codes. Elements in the array depend on the number of
 
 ▸ (`color`, `easingFunc`): [`Color`](paramTypes.md#color)[]
 
-##### Parameters
+##### Parameters:abacus:
 
 | Name | Type |
 | :------ | :------ |
 | `color` | [`Color`](paramTypes.md#color) |
 | `easingFunc` | (`t`: `number`) => `number` |
 
-##### Returns
+##### Returns:back:
 
 [`Color`](paramTypes.md#color)[]
 
-**`Function`**
 
-**`Description`**
+
+**`Description`** :information_source:
 
 Generates a randomised classic color scheme from a single base color.
 
-**`Example`**
+**`Example`** :clipboard:
 
 ```ts
 import { base } from 'huetiful-js'
@@ -78,7 +75,7 @@ console.log(base("triadic")("#a1bd2f", true))
 // [ '#a1bd2fff', '#00caffff', '#ff78c9ff' ]
 ```
 
-#### Defined in
+#### Defined in:memo:
 
 palettes/base.ts:29
 
@@ -88,26 +85,26 @@ ___
 
 ▸ **discoverPalettes**(`colors`, `scheme`): `object` \| [`Color`](paramTypes.md#color)[]
 
-#### Parameters
+#### Parameters:abacus:
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `colors` | [`Color`](paramTypes.md#color)[] | The array of colors to create palettes from. Preferably use 5 or more colors for better results. |
 | `scheme` | ``"analogous"`` \| ``"triadic"`` \| ``"tetradic"`` \| ``"complementary"`` | (Optional) The palette type you want to return. |
 
-#### Returns
+#### Returns:back:
 
 `object` \| [`Color`](paramTypes.md#color)[]
 
 An array of colors if the scheme parameter is specified else it returns an object of all the palette types as keys and their values as an array of colors. If no colors are valid for the palette types it returns an empty array for the palette results.
 
-**`Function`**
 
-**`Description`**
+
+**`Description`** :information_source:
 
 Takes an array of colors and finds the best matches for a set of predefined palettes. The function does not work on achromatic colors, you may use isAchromatic to filter grays from your collection before passing it to the function.
 
-**`Example`**
+**`Example`** :clipboard:
 
 ```ts
 import { discoverPalettes } from 'huetiful-js'
@@ -130,7 +127,7 @@ console.log(discoverPalettes(sample, "tetradic"))
 // [ '#ffff00ff', '#00ffdcff', '#310000ff', '#720000ff' ]
 ```
 
-#### Defined in
+#### Defined in:memo:
 
 palettes/discoverPalettes.ts:39
 
@@ -140,26 +137,26 @@ ___
 
 ▸ **earthtone**(`color`, `options`): [`Color`](paramTypes.md#color)[]
 
-#### Parameters
+#### Parameters:abacus:
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `color` | [`Color`](paramTypes.md#color) | The color to interpolate an earth tone with. * |
 | `options` | [`EarthtoneOptions`](paramTypes.md#earthtoneoptions) | Optional overrides for customising interpolation and easing functions. |
 
-#### Returns
+#### Returns:back:
 
 [`Color`](paramTypes.md#color)[]
 
 The array of colors resulting from the earthtone interpolation as hex codes.
 
-**`Function`**
 
-**`Description`**
+
+**`Description`** :information_source:
 
 Creates a scale of a spline based interpolation between an earthtone and a color.
 
-**`Example`**
+**`Example`** :clipboard:
 
 ```ts
 import { earthtone } from 'huetiful-js'
@@ -168,7 +165,7 @@ console.log(earthtone("pink",{earthtones:'clay',iterations:5 }))
 // [ '#6a5c52ff', '#8d746aff', '#b38d86ff', '#d9a6a6ff', '#ffc0cbff' ]
 ```
 
-#### Defined in
+#### Defined in:memo:
 
 palettes/earthtone.ts:34
 
@@ -178,26 +175,26 @@ ___
 
 ▸ **getComplimentaryHue**(`color`, `colorObj?`): [`Color`](paramTypes.md#color) \| \{ `color`: [`Color`](paramTypes.md#color) ; `hue`: `string`  }
 
-#### Parameters
+#### Parameters:abacus:
 
 | Name | Type | Default value | Description |
 | :------ | :------ | :------ | :------ |
 | `color` | [`Color`](paramTypes.md#color) | `undefined` | The color to retrieve its complimentary hue. |
 | `colorObj` | `boolean` | `false` | Optional boolean whether to return an object with the result color hue family or just the result color. Default is false. |
 
-#### Returns
+#### Returns:back:
 
 [`Color`](paramTypes.md#color) \| \{ `color`: [`Color`](paramTypes.md#color) ; `hue`: `string`  }
 
 An object with the hue family and complimentary color as keys.
 
-**`Function`**
 
-**`Description`**
+
+**`Description`** :information_source:
 
 Gets the complementary hue of the passed in color. The function is internally guarded against achromatic colors.
 
-**`Example`**
+**`Example`** :clipboard:
 
 ```ts
 import { getComplimentaryHue } from "huetiful-js";
@@ -209,7 +206,7 @@ console.log(getComplimentaryHue("purple"))
 // #005700ff
 ```
 
-#### Defined in
+#### Defined in:memo:
 
 palettes/getComplimentaryHue.ts:31
 
@@ -219,25 +216,25 @@ ___
 
 ▸ **getHue**(`color`): [`Hue`](paramTypes.md#hue)
 
-#### Parameters
+#### Parameters:abacus:
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `color` | [`Color`](paramTypes.md#color) | The color to query its shade or hue family. |
 
-#### Returns
+#### Returns:back:
 
 [`Hue`](paramTypes.md#hue)
 
 The name of the hue family for example red or green.
 
-**`Function`**
 
-**`Description`**
+
+**`Description`** :information_source:
 
 Gets the hue family which a a color belongs to with the overtone included (if it has one.). For achromatic colors it returns the string "gray".
 
-**`Example`**
+**`Example`** :clipboard:
 
 ```ts
 import { getHue } from 'huetiful-js'
@@ -246,7 +243,7 @@ console.log(getHue("#310000"))
 // red
 ```
 
-#### Defined in
+#### Defined in:memo:
 
 palettes/getHue.ts:25
 
@@ -256,26 +253,26 @@ ___
 
 ▸ **hueShift**(`color`, `options`): [`Color`](paramTypes.md#color)[]
 
-#### Parameters
+#### Parameters:abacus:
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `color` | [`Color`](paramTypes.md#color) | The color to use as the base of the hueshift. Colors are internally converted to LCH. |
 | `options` | [`HueShiftOptions`](paramTypes.md#hueshiftoptions) | The optional overrides object to customize per channel options like interpolation methods and channel fixups. |
 
-#### Returns
+#### Returns:back:
 
 [`Color`](paramTypes.md#color)[]
 
 An array of colors in hex. The length of the resultant array is the number of iterations multiplied by 2 plus the base color passed or (iterations*2)+1
 
-**`Function`**
 
-**`Description`**
+
+**`Description`** :information_source:
 
 Generates a palette of hue shifted colors (as a color becomes lighter, its hue shifts up and darker when its hue shifts  down. ) from a single base color. Min and max lightness value determine how light or dark our colour will be at either extreme.
 
-**`Example`**
+**`Example`** :clipboard:
 
 ```ts
 import { hueShift } from "huetiful-js";
@@ -294,7 +291,7 @@ console.log(hueShiftedPalette);
 ]
 ```
 
-#### Defined in
+#### Defined in:memo:
 
 palettes/hueShift.ts:39
 
@@ -304,28 +301,28 @@ ___
 
 ▸ **pairedScheme**(`color`, `options`): [`Color`](paramTypes.md#color)[]
 
-#### Parameters
+#### Parameters:abacus:
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `color` | [`Color`](paramTypes.md#color) | The color to return a paired color scheme from. |
 | `options` | [`PairedSchemeOptions`](paramTypes.md#pairedschemeoptions) | The optional overrides object to customize per channel options like interpolation methods and channel fixups. |
 
-#### Returns
+#### Returns:back:
 
 [`Color`](paramTypes.md#color)[]
 
 An array containing the paired scheme.
 
-**`Function`**
+
 
 pairedScheme
 
-**`Description`**
+**`Description`** :information_source:
 
 Creates a scheme that consists of a base color that is incremented by a hueStep to get the final hue to pair with.The colors are interpolated via white or black.
 
-**`Example`**
+**`Example`** :clipboard:
 
 ```ts
 import { pairedScheme } from 'huetiful-js'
@@ -334,7 +331,7 @@ console.log(pairedScheme("green",{hueStep:6,iterations:4,tone:'dark'}))
 // [ '#008116ff', '#006945ff', '#184b4eff', '#007606ff' ]
 ```
 
-#### Defined in
+#### Defined in:memo:
 
 palettes/paired.ts:32
 
@@ -344,25 +341,25 @@ ___
 
 ▸ **pastel**(`color`): [`Color`](paramTypes.md#color)
 
-#### Parameters
+#### Parameters:abacus:
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `color` | [`Color`](paramTypes.md#color) | The color to return a pastel variant of. |
 
-#### Returns
+#### Returns:back:
 
 [`Color`](paramTypes.md#color)
 
 A random pastel color.
 
-**`Function`**
 
-**`Description`**
+
+**`Description`** :information_source:
 
 Returns a random pastel variant of the passed in color.
 
-**`Example`**
+**`Example`** :clipboard:
 
 ```ts
 import { pastel } from 'huetiful-js'
@@ -371,7 +368,8 @@ console.log(pastel("green"))
 // #036103ff
 ```
 
-#### Defined in
+#### Defined in:memo:
 
 palettes/pastel.ts:65
+
 

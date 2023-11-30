@@ -22,13 +22,14 @@ The supported color formats are:
 
 - And of course hexadecimal strings.
 
-[huetiful](../README.md) / converters
 
-# Module: converters
+[huetiful-js](../README.md) / converters
 
-## Table of contents
+# Module::package: converters
 
-### Functions
+## Table of contents:scroll:
+
+### Functions:toolbox:
 
 - [getTemp](converters.md#gettemp)
 - [num2rgb](converters.md#num2rgb)
@@ -42,184 +43,186 @@ The supported color formats are:
 
 ▸ **getTemp**(`color`): `number`
 
-#### Parameters
+#### Parameters:abacus:
 
-| Name    | Type                           | Description                              |
-| :------ | :----------------------------- | :--------------------------------------- |
+| Name | Type | Description |
+| :------ | :------ | :------ |
 | `color` | [`Color`](paramTypes.md#color) | The color to query its temperature value |
 
-#### Returns
+#### Returns:back:
 
 `number`
 
 The color's temperature in Kelvins.
 
-**`Description`**
+**`Description`** :information_source:
 
 Returns the temperature value in Kelvins of the passed in color.
 
-**`Example`**
+**`Example`** :clipboard:
 
 ```ts
-import { getTemp } from 'huetiful-js';
+import { getTemp } from 'huetiful-js'
 
-console.log(getTemp('#a1bd2f'));
+console.log(getTemp('#a1bd2f'))
 // 2542
 ```
 
-#### Defined in
+#### Defined in:memo:
 
 converters/getTemp.ts:24
 
----
+___
 
 ### num2rgb
 
 ▸ **num2rgb**(`num`, `hex?`): [`Color`](paramTypes.md#color)
 
-#### Parameters
+#### Parameters:abacus:
 
-| Name  | Type      | Default value | Description                  |
-| :---- | :-------- | :------------ | :--------------------------- |
-| `num` | `number`  | `undefined`   | The number to convert to RGB |
-| `hex` | `boolean` | `false`       | -                            |
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `num` | `number` | `undefined` | The number to convert to RGB |
+| `hex` | `boolean` | `false` | - |
 
-#### Returns
+#### Returns:back:
 
 [`Color`](paramTypes.md#color)
 
 color An RGB color object or hex string.
 
-**`Function`**
 
-**`Description`**
+
+**`Description`** :information_source:
 
 Returns the RGB color equivalent of any number between 0 and 16,777,215.
 
-**`Example`**
+**`Example`** :clipboard:
 
 ```ts
-import { num2rgb } from 'huetiful-js';
+import { num2rgb } from 'huetiful-js'
 
-console.log(num2rgb(900, true));
+console.log(num2rgb(900, true))
 // #000384
 ```
 
-#### Defined in
+#### Defined in:memo:
 
 converters/num2rgb.ts:23
 
----
+___
 
 ### rgb2num
 
 ▸ **rgb2num**(`color`): `number`
 
-#### Parameters
+#### Parameters:abacus:
 
-| Name    | Type                           | Description                                       |
-| :------ | :----------------------------- | :------------------------------------------------ |
+| Name | Type | Description |
+| :------ | :------ | :------ |
 | `color` | [`Color`](paramTypes.md#color) | The color to convert to its numerical equivalent. |
 
-#### Returns
+#### Returns:back:
 
 `number`
 
 value The numerical value of the color from 0 to 16,777,215.
 
-**`Function`**
 
-**`Description`**
+
+**`Description`** :information_source:
 
 Returns the numerical equivalent of a color.
 
-**`Example`**
+**`Example`** :clipboard:
 
 ```ts
-import { rgb2num } from 'huetiful-js';
+import { rgb2num } from 'huetiful-js'
 
-console.log(rgb2num('b2c3f1'));
+console.log(rgb2num("b2c3f1"))
 // 11715569
 ```
 
-#### Defined in
+#### Defined in:memo:
 
 converters/rgb2num.ts:20
 
----
+___
 
 ### temp2Color
 
 ▸ **temp2Color**(`kelvin`, `hex?`): [`Color`](paramTypes.md#color)
 
-#### Parameters
+#### Parameters:abacus:
 
-| Name     | Type      | Default value | Description                                                                                             |
-| :------- | :-------- | :------------ | :------------------------------------------------------------------------------------------------------ |
-| `kelvin` | `number`  | `undefined`   | The number of Kelvins. From 0 to 30,000 .                                                               |
-| `hex`    | `boolean` | `false`       | Optional boolean parameter to either return an RGB color object or hexadecimal string. Default is true. |
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `kelvin` | `number` | `undefined` | The number of Kelvins. From 0 to 30,000 . |
+| `hex` | `boolean` | `false` | Optional boolean parameter to either return an RGB color object or hexadecimal string. Default is true. |
 
-#### Returns
+#### Returns:back:
 
 [`Color`](paramTypes.md#color)
 
-color The color as a hexadecimal or RGB color object.
+color The color as a hexadecimal  or RGB color object.
 
-**`Function`**
 
-**`Description`**
+
+**`Description`** :information_source:
 
 Converts the temperature value (in Kelvins) to an RGB color.
 
-**`Example`**
+**`Example`** :clipboard:
 
 ```ts
-import { temp2Color } from 'huetiful-js';
+import { temp2Color } from 'huetiful-js'
 
-console.log(temp2Color(2542));
+console.log(temp2Color(2542))
 // #ffa44a
 ```
 
-#### Defined in
+#### Defined in:memo:
 
-converters/temp2Color.ts:20
+converters/temp2Color.ts:21
 
----
+___
 
 ### toHex
 
 ▸ **toHex**(`color`): [`Color`](paramTypes.md#color)
 
-#### Parameters
+#### Parameters:abacus:
 
-| Name    | Type                           | Description                                                                       |
-| :------ | :----------------------------- | :-------------------------------------------------------------------------------- |
+| Name | Type | Description |
+| :------ | :------ | :------ |
 | `color` | [`Color`](paramTypes.md#color) | The color to convert to hexadecimal. Works on color objects and CSS named colors. |
 
-#### Returns
+#### Returns:back:
 
 [`Color`](paramTypes.md#color)
 
 A hexadecimal representation of the passed in color.
 
-**`Function`**
 
-**`Description`**
 
-Converts a wide range of color tokens which are color objects, and CSS named colors (for example 'red'), numbers from 0 to 166,777,215 and arrays in the form of [string,number,number,number,numer?] the first element in the array being the mode color space and the fourth optional number element as the opacity value to hexadecimal.
+**`Description`** :information_source:
 
-**`Example`**
+Converts a wide range of color tokens which are color objects, and CSS named colors  (for example 'red'), numbers from 0 to 166,777,215 and arrays in the form of [string,number,number,number,numer?] the first element in the array being the mode color space and the fourth optional number element as the opacity value to hexadecimal.
+
+**`Example`** :clipboard:
 
 ```ts
-import { toHex } from 'huetiful-js';
+import { toHex } from "huetiful-js";
 
-console.log(toHex({ l: 50, c: 31, h: 100, alpha: 0.5, mode: 'lch' }));
+console.log(toHex({ l: 50, c: 31, h: 100, alpha: 0.5, mode: "lch" }))
 // #7b794180
 
-console.log(toHex({ l: 50, c: 31, h: 100, mode: 'lch' }));
+console.log(toHex({ l: 50, c: 31, h: 100, mode: "lch" }))
 // #7b7941
 ```
 
-#### Defined in
+#### Defined in:memo:
 
 converters/toHex.ts:22
+
+
