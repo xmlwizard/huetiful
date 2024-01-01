@@ -1,22 +1,13 @@
 {
   "name": "huetiful-js",
-  "version": "1.7.83",
+  "version": "1.7.87",
   "type": "module",
-  "main": "./dist/huetiful.esm.mjs",
-  "module": "./dist/huetiful.esm.mjs",
-  "browser": "./dist/huetiful.min.js",
-  "exports": {
-    "./fp": "./dist/fp/index.esm.mjs",
-    "./getters_and_setters": "./dist/getters_and_setters/index.esm.mjs",
-    "./converters": "./dist/converters/index.esm.mjs",
-    "./palettes": "./dist/palettes/index.esm.mjs",
-    "./filterBy": "./dist/filterBy/index.esm.mjs",
-    "./sortBy": "./dist/sortBy/index.esm.mjs",
-    "./colors": "./dist/colors/index.esm.mjs",
-    ".": "./dist/huetiful.esm.mjs"
-  },
-  "types": "./dist/index.d.ts",
-  "description": "Library for general purpose color manipulations based on CuloriJS .",
+  "main": "./lib/huetiful.cjs",
+  "module": "./lib/huetiful.esm.mjs",
+  "browser": "./lib/huetiful.min.js",
+  "jsdelivr": "./lib/huetiful.umd.js",
+  "types": "./lib/huetiful.d.ts",
+  "description": "Open source TypeScript library for general purpose color manipulations and generating custom color scales.",
   "dependencies": {
     "culori": "^3.0.1"
   },
@@ -29,43 +20,98 @@
     "eslint": "^8.53.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.1",
-    "huetiful-js": "^1.7.6",
     "husky": "^8.0.3",
     "nodemon": "^3.0.1",
+    "typedoc": "^0.25.3",
     "typedoc-plugin-markdown": "^3.17.1",
-    "typescript": "^5.3.2"
+    "typescript": "^5.0.2"
   },
   "scripts": {
-    "docs": "npx typedoc --plugin typedoc-plugin-markdown  && rm -r docs  && mkdir docs && node docs.cjs && git add .",
-    "build": " node build.cjs",
-    "prepare": " npm run build && npm run types",
-    "types": "dts-bundle-generator -o ./dist/index.d.ts ./src/index.ts",
-    "lint": "eslint . --ext .ts",
-    "format": "prettier --config .prettierrc.json \"src/**/*.ts\" --write"
+    "test": "jasmine",
+    "docs": "npx typedoc && cp -r ./huetiful-logo.png ./docs && git add .",
+    "build": "node build.cjs",
+    "prepare": " npm run build && npm run types && npm run docs",
+    "types": "dts-bundle-generator -o ./lib/huetiful.d.ts ./src/index.ts",
+    "lint": "eslint --fix --ext .ts",
+    "format": "prettier \"./src/*.ts\" --write",
+    "start": "nodemon app.js --watch "
   },
   "husky": {
-    "hooks": {
-      "pre-commit": " echo \"[Husky] pre-commit\" && npm run format && npm run lint",
-      "pre-push": "git pull"
+    "hooks": {}
+  },
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "printWidth": 80,
+    "tabWidth": 2,
+    "useTabs": false,
+    "trailingComma": "none",
+    "bracketSpacing": true
+  },
+  "eslintConfig": {
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint",
+      "prettier"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended",
+      "prettier"
+    ],
+    "rules": {
+      "no-console": 1,
+      "no-ternary": 2,
+      "no-var": 0,
+      "no-explicit-any": 0,
+      "prettier/prettier": 0,
+      "@typescript-eslint/ban-ts-comment": 0,
+      "no-useless-escape": 1
     }
   },
+  "typedocOptions": {
+    "entryPoints": [
+      "./src/generators.ts",
+      "./src/utils.ts",
+      "./src/colors.ts",
+      "./src/converters.ts",
+      "./src/filterBy.ts",
+      "./src/sortBy.ts",
+      "./src/types.d.ts"
+    ],
+    "entryPointStrategy": "resolve",
+    "out": "./docs",
+    "exclude": [
+      "./color-maps"
+    ],
+    "tsconfig": "./tsconfig.json",
+    "disableSources": true
+  },
   "files": [
-    "dist",
+    "src",
+    "lib",
+    "CHANGELOG.md",
+    "CODE_OF_CONDUCT.md",
     "README.md",
     "CONTRIBUTING.md",
-    "LICENSE.md",
-    "huetiful-logo.png"
+    "LICENSE.md"
   ],
   "repository": {
     "type": "git",
     "url": "https://github.com/prjctimg/huetiful.git"
   },
   "keywords": [
+    "chromatic adaption",
+    "functional",
+    "typescript",
+    "jch",
     "lch",
     "palettes",
     "color blind",
     "color vision deficiency",
-    "color schemes",
+    "schemes",
     "color",
     "culori",
     "gradients",
@@ -73,13 +119,12 @@
     "cielab",
     "rgb",
     "hsl",
-    "hsv",
-    "colorbrewer",
-    "tailwindcss"
+    "generator",
+    "color brewer"
   ],
   "author": "Dean Tarisai",
   "email": "arcaneqoder@gmail.com",
-  "homepage": "https://huetiful-docs.vercel.app",
+  "homepage": "https://prjctimg.github.io/huetiful",
   "license": "Apache-2.0",
   "engines": {
     "node": "^12.20.0 || ^14.13.1 || >=16.0.0"

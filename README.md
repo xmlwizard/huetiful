@@ -1,42 +1,37 @@
 
 ![Logo](./huetiful-logo.png)
-
-#### JavaScript library for general purpose color manipulations
-
-The aim🎯 of this project is to help designers👨🏾‍🎨👩🏻‍🎨 and developers👩🏾‍💻 alike  work with color🎨 more programatically using utilities based on color theory. Though not necessarily a requirement, a basic background of color spaces, properties of color and any other color theory related information will make the library's use cases appear more simpler.
-
-This project is inspired🤩 by projects such a [chroma-js](https://gka.github.io/chroma.js),[colorbrewer](https://colorbrewer2.org),[TailwindCSS](https://tailwindcss.com) and borrows some of the reasoning behind them to build functionality. In fact this library uses [Culori](https://culorijs.org) as its core dependency because it provides a rich API of low level functions written in JavaScript to perform color conversions and other general purpose color manipulations.
+TypeScript library for general purpose color manipulations and generating custom color scales.
 
 ## Getting started⛳
 
-The library🧾 is available on npm as a package📦: Links to CDNs will be added soon.
+### Node
 
-> Note: Assuming you already have NodeJS installed
-Use [npm](https://www.npmjs.com/package/huetiful-js) to install the package.
+The library🧾 is available on npm as a package📦 for use in Node:
 
 ```bash
 npm i huetiful-js
 ```
 
-For use in the browser🌐, you can use a CDN [you can use jsdelivr]() to load the library.
+You can use a CDN in this example, jsdelivr to load the library remotely:
 
-```html
-https://cdn.jsdelivr.net/npm/huetiful-js/dist/huetiful.min.js
+```js
+import {...} from 'https://cdn.jsdelivr.net/npm/huetiful-js/lib/huetiful.esm.mjs'
 
-# With script tag 
-
-<script type='module' src='https://cdn.jsdelivr.net/npm/huetiful-js/dist/huetiful.esm.min.mjs'></script>
 ```
 
-## Overview👀
+### Browser
 
-Below are short walkthroughs🚶🏾‍♂️ to demonstrate👩🏽‍🏫 how the functions can be used in example scenerios.
+Or load the library as a UMD glabal (`huetiful`) in your HTML file using a `<script>` tag:
 
-### Colors🌈
+```html
+# With script tag
+
+<script src='https://cdn.jsdelivr.net/npm/huetiful-js/dist/huetiful.umd.js'></script>
+```
 
 #### What's a color 🤔?
 
-A color can be defined in various formats. This gives us more flexibility in how we want to define our color. Below are examples listing all the supported formats of passing in color values and their respective conversion functions:
+A color can be defined using different data types(arrays, strings, numbers plain objects). This allows us to work with color in almost any format and flexibility in how we want to define our color. Below are some examples listing all the supported formats of passing in color values and their respective conversion functions:
 
 ```js
 import { num2rgb, toHex } from 'huetiful-js'
@@ -76,22 +71,17 @@ console.log(toHex(arrColorWithAlpha))
 
 ```
 
-Note⚠️ that toHex takes any color format and returns the hex string represantation of it:
+> ℹ️ [See here](https://culorijs.org/color-spaces
+)  and the expected channel ranges or [more on converter functions](https://prjctimg.github.io/huetiful/modules/converters.html) page 🔗.
 
-We can even mix different color formats with no problem at all🤯:
+#### TailwindCSS colors🎨
 
-For more informationℹ️ on the color spaces supported by the library and the expected ranges, checkout the [Color Spaces page on the Culori docs](https://culorijs.org/color-spaces) . Or checkout the library's [Color conversions](https://huetiful-docs.vercel.app/blog/color-spaces-and-converters) page 🔗.
+As a starting point the library comes along with the default TailwindCSS palette included. This helps you get started easier when you're using [palette functions](https://prjctimg.github.io/huetiful/modules/generators.html) such as `hueShift()` and `earthtone()`
 
-> ℹ️ All the functions are internally guarded by `toHex()` so you don't have to worry about converting colors back and fourth.
-
-#### Tailwind colors🎨
-
-As a starting point the library comes along with the default TailwindCSS palette included.. This helps you get started easier when you're using [palette functions](https://huetiful-docs.vercel.app/blog/palette-utilities) such as `hueShift()` and `earthtone()`
-
-The Tailwind colors are in the form of two wrapper functions that both take the same parameters but with a few differences: one is curried by default and the other is a tweaked variant of the same functionality but with a few improvements. Below are some examples showing the differences between the two functions:
+The Tailwind colors can be accessed from two wrapper functions, `tailwindColors` and `colors` , that both take the same parameters but `colors` takes both parameters at once while `tailwindColors` is curried. Here's an example showing the differences between the two functions:
 
 ```js
- import { tailwindColors,colors } from "huetiful-js";
+ import { tailwindColors , colors } from "huetiful-js";
 
 // We pass in red as the target hue.
 // It returns a function that can be called with an optional value parameter
@@ -146,16 +136,14 @@ console.log(red100)
 
 ```
 
+### Working with arrays of color🎨
 
-
-### Working with collections of colors👩🏻‍🎨🎨
-
-The library🧾 has functions for sorting and filtering colors using their property values like saturation,lightness and even temperaure in Kelvins. Below are some examples of using the filtering and sorting functions on an array of colors:
+We can sort and filter colors using their property or channel values values like saturation,lightness and even contrast!
+Here are some example using the filtering and sorting functions on an array of colors:
 
 #### Sorting colors
 
-Below is an example of sorting colors by the relative luminance as defined by WCAG 2.0. 
-> Note that you can specify the order as either ascending (`asc`) or descending (`desc`). The default is ascending. :
+An example of sorting colors by the relative luminance as defined by the WCAG 2.0 formula
 
 ```js
 import { sortByLuminance } from "huetiful-js";
@@ -186,6 +174,8 @@ console.log(sorted)
   '#ffff00'
 ]
 
+// Note that you can specify the order as either ascending (`asc`) or descending (`desc`). The default is ascending. :
+
 let sortedDescending = sortByLuminance(sample, "desc");
 console.log(sortedDescending)
 // [
@@ -202,7 +192,7 @@ console.log(sortedDescending)
 
 #### Filtering colors
 
-Below is an example of filtering colors by their hue angle. The function uses LCH internally because its more perceptually uniform than HSL. [George Francis explains this phenomena in detail here.](https://tympanus.net/codrops/2021/12/07/coloring-with-code-a-programmatic-approach-to-design/)
+An example of filtering colors by the value of the hue angle. The function uses the Jch colorspace because of its perceptual uniformity. [George Francis explains this phenomena in detail here.](https://tympanus.net/codrops/2021/12/07/coloring-with-code-a-programmatic-approach-to-design/)
 
 ```js
  let sample = [
@@ -235,11 +225,13 @@ console.log(filterByHue(sample, '<=100')
 // [ '#ffff00', '#310000', '#3e0000', '#4e0000', '#600000', '#720000' ]
 
 ```
-[See more about the parameter types and other filtering functions](https://huetiful-docs.vercel.app/blog/sorting-color)
 
-### Palette functions
+[See more about the parameter types and other filtering functions](https://prjctimg.github.io/huetiful/modules/sortBy.html)
 
-A small collection of simple palette functions are included in the library. One of my favourites is the `hueShift()`  (as a color becomes lighter, its hue shifts up and darker when its hue shifts  down. ) .
+### Palette generators
+
+A few simple palette generator functions are included in the library. One of my favourites is `hueShift`  (as a color becomes lighter, its hue shifts up and darker when its hue shifts down. ) .
+
 ```js
 import { hueShift } from "huetiful-js";
 
@@ -260,11 +252,11 @@ console.log(hueShiftedPalette);
 
 ```
 
-There's more where that came from. [See the palettes page](https://huetiful-docs.vercel.app/blog/palettes)
+[See more palette generator functions](https://prjctimg.github.io/huetiful/modules/generators.html)
 
 ### Predicates⚖️
 
-Is this color cool🥶 or warm 🥵, is it achromatic (grayscale) or chromatic? Though its easy to tell colors apart visually when they're displayed on the screen📺 it can be a bit confusing to tell colors apart using code🔢. Below is an example of demonstrating how to determine if a color is gray or not:
+Is this color cool🥶 or warm 🥵, is it achromatic (grayscale) or chromatic? Though its easy to tell colors apart visually when they're displayed on the screen📺 it can be a bit confusing to tell colors apart using code🔢. Below is an example showing how to determine if a color is gray or not:
 
 ```js
 
@@ -311,11 +303,10 @@ console.log(map(grays, isAchromatic));
 
 ```
 
-Here's an example🎆 showing how we can check if a color is cool using one of the predicates:
-
+Here's an example🎆 showing how we can check if a color is cool using one of the predicate functions:
 
 ```js
-import { isCool } from 'huetiful-js' 
+import { isCool } from 'huetiful-js'
 
 let sample = [
   "#00ffdc",
@@ -333,7 +324,8 @@ console.log(map(sample, isCool));
 
 
 ```
-Another use👷 case would be passing the predicate to an array method like `filter` to filter a collection of colors removing colors that return false for the passed in predicate. In the following example we use is warm to only return warm colors:
+
+Another use👷 case would be passing the predicate to an array method like `filter` to filter a collection of colors removing colors that return false for the passed in predicate. In the following example we use is `isWarm` to only return warm colors:
 
 ```js
 import { isWarm } from 'huetiful-js'
@@ -348,20 +340,6 @@ console.log(sample.filter(isWarm))
 // [ '#00ff78' ]
 
 
-```
-
-### Get the temperature🌡️ right
-
-And what if we wanted to get the color with the smallest/largest temperature range in Kelvins:
-
-```js
-import { minTemp,maxTemp } from 'huetiful-js'
-
-console.log(minTemp("#a1bd2f"))
-// 2528
-
-console.log(maxTemp("b2c3f1"))
-// 20107
 ```
 
 Or maybe we want to know which color has the furthest hue distance in our sample collection against our target color 🤔:
@@ -390,10 +368,10 @@ console.log(getFarthestHue('lime', sample, 'lch'))
 
 ## What's next🤷🏽‍♂️
 
-The list of functions goes on beyond this🌌. And since the library is pure JavaScript, you can hook it up with your creative👨🏻‍🎨 coding library of choice like p5js or runejs. The possibilities are limited by the imagination🤯 of the user.
+> The possibilities are limited by the imagination🤯 of the user._
+> ~ me :smile:
 
-
-[See the full docs📜](https:huetiful-docs.vercel.app)
+[See the full docs here📜](https:prjctimg.github.io/huetiful)
 
 ## Need help😣 ?
 
@@ -401,19 +379,16 @@ See some unexpected results😖? [Check the issue tracker](https://github.com/pr
 
 Would like to join the chat🗣️ and share ideas💡 and suggestions💭 ? [See the discussions and just say hi, or share a coding meme(whatever breaks the ice🏔️)](https://github.com/prjctimg/huetiful/discussions)
 
-## Contributing👐🏾🤝
+## Contributing👐🏾
 
-First of all, thank you🙏🏾 for using huetiful-js! Its people like you👈🏾 that make open source software better for the community👨‍👩‍👦‍👦!
-Contributions are welcome! Help make this project better and easier to use for other developers by sharing your ideas and stomping out bugs🐛 and feature suggestions💡. Please see🔍 the [CONTRIBUTING](./CONTRIBUTING.md) file for more information on how to get started.
+This project is fully open source so contributions are welcome! Help make this project better by suggesting improvements or features and patching bugs🐛. See🔍 the [CONTRIBUTING](./CONTRIBUTING.md) file for more information on how to get started.
 
 ## References🔗
 
 [Coloring with code: A programmatic approach by George Francis](https://tympanus.net/codrops/2021/12/07/coloring-with-code-a-programmatic-approach-to-design/)
 
-> ## License
+> ###### License
 >
-> Copyright (c) 2023
+> Copyright (c) 2023,
 > Dean Tarisai and contributors
 > huetiful-js is released under the [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0) license.
->
-> This project makes extensive use of open source resources and its inception would have had been null if it wasn't for their pioneering. See the [LICENSES](./LICENSE.md) for the full list of open source licenses.

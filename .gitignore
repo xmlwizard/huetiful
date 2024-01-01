@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+lodash-main
+lessons-learnt-from-my-first-open-source-project.md
+emoji.md
 # testing
 /temp
 /color-thief
@@ -13,10 +16,10 @@
 # next.js
 /.next/
 /out/
-
+source/lib
 # production
 /build
-/dist
+lib
 
 # misc
 .DS_Store
@@ -40,5 +43,9 @@ debug.log
 next-env.d.ts
 /_site
 
+
+
 app.js
 *.code-worspace
+/leonardo-main
+source/lib

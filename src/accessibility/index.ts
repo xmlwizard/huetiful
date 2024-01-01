@@ -1,1 +1,0 @@
-export { colorDeficiency } from './colorDeficiency';

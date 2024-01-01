@@ -1,17 +1,20 @@
 {
   "include": [
-    "src/index.ts"
-  ],
+    "./src/index.ts"
+  ],"exclude":["**/*/node_modules"],
   "compilerOptions": {
+    "lib":["es2015"],
+    "target":"es2015",
     "allowImportingTsExtensions": true,
     "skipLibCheck": true,
     // "allowJs": true,
-    "checkJs": true,
+   // "checkJs": true,
     "declaration": true,
     // "declarationMap": true,
     "emitDeclarationOnly": true,
     "isolatedModules": true,
     "forceConsistentCasingInFileNames": true,
     "declarationDir": "./types",
+  // "rootDir":"./src"
   }
 }

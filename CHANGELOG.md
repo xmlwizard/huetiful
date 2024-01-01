@@ -36,7 +36,8 @@ Changed docs to docsify
 
 - Fully treeshakable
 - Core-utils directory was split to submodules.
-- Added the `load()` to create read-manipulate-output chains like the one presented by the `chroma()` constructor in chroma-js
+- Added the `load()` utility to create read-manipulate-output chain with all the utilities that take a collection of colos as first input. The chain is lazy.
+- Added the Color class which is aliased as `color()` which has all the utilities that take a color as the first argument bound to its prototype as methods. Calling color() simply calls `new IColor()` under the hood.
 - Added the `toHex` utility which parses all known color tokens similar to chroma-js
 - Eliminated dependancy on lodash.
 - Used treeshaken Culori modules to reduce bundle size. Only 20KB when minified!
@@ -47,8 +48,9 @@ Over 50 utilities in the API now!
 - All palette functions have easings for internal computations
 Updated the docs!
 - Improved the accuracy of temperature based utilities.
+- Rewrote the type declarations to make them simpler and more generic.
 - All palette functions now take an optional overrides object to fine tune parameters like easing methods, fixups etc.
-- Added introduction guides to help users understand the project
+- Temperature utilities are marked as experiental until a more effecient way of predicting color temperature is discovered
 - Rewrote the README and CONTRIBUTING. Added missing licenses for borrowed code.
-Special thanks to our [contributors!]()
+
 
