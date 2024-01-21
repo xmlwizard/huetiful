@@ -68,3 +68,7 @@ Updated the docs!
 - Fixed import errors. The library is now fully ESM with a UMD build for CDN and minified version for browser.
 - Added support for more uniform colorspaces in hueShift. Jch is currently unsupported because of lightness mapping issues. Support is coming soon though.
 - Removed cyclic dependencies that caused a stackoverflow error.
+
+### 1.79.96
+
+- filterBy and sortBy modules now support normalization of passed in ranges. This allows us to pass in the same value and still get the same relative percentage or fraction of the range of the factor being queried.

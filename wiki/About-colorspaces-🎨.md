@@ -1,4 +1,3 @@
-<!-- toc -->
 
 # About colorspaces
 
