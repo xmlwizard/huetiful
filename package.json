@@ -31,7 +31,7 @@
   },
   "scripts": {
     "test": "jasmine",
-    "docs": "npx typedoc && git add . && git commit -a -m 'Updated docs'",
+    "docs": "npx typedoc && cp -r ./.github/logo.png ./docs && cp -r ./.github/logo_v1.png ./docs && git add . && git commit -a -m 'Updated docs'",
     "code:build": "node build.cjs",
     "code:prepare": "npm run code:lint & npm run code:format & npm run code:build & npm run code:types & npm run docs",
     "code:types": "dts-bundle-generator -o ./lib/huetiful.d.ts ./src/index.ts",
@@ -89,14 +89,15 @@
     "plugin": [
       "typedoc-material-theme"
     ],
-    "themeColor": "#065f46",
+    "themeColor": "#000000",
     "entryPointStrategy": "resolve",
     "out": "docs",
     "exclude": [
       "./color-maps"
     ],
     "tsconfig": "./tsconfig.json",
-    "disableSources": true
+    "disableSources": false,
+    "gitRemote": "main"
   },
   "files": [
     "lib",

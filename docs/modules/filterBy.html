@@ -1,162 +1,162 @@
 <!DOCTYPE html><html class="default" lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>filterBy | huetiful-js</title><meta name="description" content="Documentation for huetiful-js"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><script defer src="../assets/main.js"></script><script async src="../assets/search.js" id="tsd-search-script"></script><script async src="../assets/navigation.js" id="tsd-nav-script"></script><style>
 @media (prefers-color-scheme: dark) {
   :root {
-    --md-sys-color-primary: #68dbb0;
-    --md-sys-color-on-primary: #003828;
-    --md-sys-color-primary-container: #00513b;
-    --md-sys-color-on-primary-container: #85f8cb;
-    --md-sys-color-secondary: #b3ccbf;
-    --md-sys-color-on-secondary: #1f352b;
-    --md-sys-color-secondary-container: #354b41;
-    --md-sys-color-on-secondary-container: #cfe9da;
-    --md-sys-color-tertiary: #a6cce0;
-    --md-sys-color-on-tertiary: #093544;
-    --md-sys-color-tertiary-container: #254b5c;
-    --md-sys-color-on-tertiary-container: #c2e8fd;
+    --md-sys-color-primary: #ffb1c8;
+    --md-sys-color-on-primary: #5e1133;
+    --md-sys-color-primary-container: #7b2949;
+    --md-sys-color-on-primary-container: #ffd9e2;
+    --md-sys-color-secondary: #e3bdc6;
+    --md-sys-color-on-secondary: #422931;
+    --md-sys-color-secondary-container: #5a3f47;
+    --md-sys-color-on-secondary-container: #ffd9e2;
+    --md-sys-color-tertiary: #efbd94;
+    --md-sys-color-on-tertiary: #48290b;
+    --md-sys-color-tertiary-container: #623f20;
+    --md-sys-color-on-tertiary-container: #ffdcc1;
     --md-sys-color-error: #ffb4ab;
     --md-sys-color-on-error: #690005;
     --md-sys-color-error-container: #93000a;
     --md-sys-color-on-error-container: #ffb4ab;
-    --md-sys-color-background: #191c1a;
-    --md-sys-color-on-background: #e1e3df;
-    --md-sys-color-surface: #191c1a;
-    --md-sys-color-on-surface: #e1e3df;
-    --md-sys-color-surface-variant: #404944;
-    --md-sys-color-on-surface-variant: #bfc9c2;
-    --md-sys-color-outline: #89938d;
-    --md-sys-color-outline-variant: #404944;
+    --md-sys-color-background: #201a1b;
+    --md-sys-color-on-background: #ebe0e1;
+    --md-sys-color-surface: #201a1b;
+    --md-sys-color-on-surface: #ebe0e1;
+    --md-sys-color-surface-variant: #514347;
+    --md-sys-color-on-surface-variant: #d5c2c6;
+    --md-sys-color-outline: #9e8c90;
+    --md-sys-color-outline-variant: #514347;
     --md-sys-color-shadow: #000000;
     --md-sys-color-scrim: #000000;
-    --md-sys-color-inverse-surface: #e1e3df;
-    --md-sys-color-inverse-on-surface: #2e312f;
-    --md-sys-color-inverse-primary: #006c4f;
-    --md-sys-color-surface-dim: #111412;
-    --md-sys-color-surface-bright: #373a38;
-    --md-sys-color-surface-container-lowest: #0c0f0d;
-    --md-sys-color-surface-container-low: #191c1a;
-    --md-sys-color-surface-container: #1d201e;
-    --md-sys-color-surface-container-high: #272b29;
-    --md-sys-color-surface-container-highest: #323633
+    --md-sys-color-inverse-surface: #ebe0e1;
+    --md-sys-color-inverse-on-surface: #352f30;
+    --md-sys-color-inverse-primary: #984061;
+    --md-sys-color-surface-dim: #171213;
+    --md-sys-color-surface-bright: #3e3739;
+    --md-sys-color-surface-container-lowest: #120d0e;
+    --md-sys-color-surface-container-low: #201a1b;
+    --md-sys-color-surface-container: #241e1f;
+    --md-sys-color-surface-container-high: #2f282a;
+    --md-sys-color-surface-container-highest: #3a3334
   }
 }
 :root[data-theme="dark"] {
-  --md-sys-color-primary: #68dbb0;
-  --md-sys-color-on-primary: #003828;
-  --md-sys-color-primary-container: #00513b;
-  --md-sys-color-on-primary-container: #85f8cb;
-  --md-sys-color-secondary: #b3ccbf;
-  --md-sys-color-on-secondary: #1f352b;
-  --md-sys-color-secondary-container: #354b41;
-  --md-sys-color-on-secondary-container: #cfe9da;
-  --md-sys-color-tertiary: #a6cce0;
-  --md-sys-color-on-tertiary: #093544;
-  --md-sys-color-tertiary-container: #254b5c;
-  --md-sys-color-on-tertiary-container: #c2e8fd;
+  --md-sys-color-primary: #ffb1c8;
+  --md-sys-color-on-primary: #5e1133;
+  --md-sys-color-primary-container: #7b2949;
+  --md-sys-color-on-primary-container: #ffd9e2;
+  --md-sys-color-secondary: #e3bdc6;
+  --md-sys-color-on-secondary: #422931;
+  --md-sys-color-secondary-container: #5a3f47;
+  --md-sys-color-on-secondary-container: #ffd9e2;
+  --md-sys-color-tertiary: #efbd94;
+  --md-sys-color-on-tertiary: #48290b;
+  --md-sys-color-tertiary-container: #623f20;
+  --md-sys-color-on-tertiary-container: #ffdcc1;
   --md-sys-color-error: #ffb4ab;
   --md-sys-color-on-error: #690005;
   --md-sys-color-error-container: #93000a;
   --md-sys-color-on-error-container: #ffb4ab;
-  --md-sys-color-background: #191c1a;
-  --md-sys-color-on-background: #e1e3df;
-  --md-sys-color-surface: #191c1a;
-  --md-sys-color-on-surface: #e1e3df;
-  --md-sys-color-surface-variant: #404944;
-  --md-sys-color-on-surface-variant: #bfc9c2;
-  --md-sys-color-outline: #89938d;
-  --md-sys-color-outline-variant: #404944;
+  --md-sys-color-background: #201a1b;
+  --md-sys-color-on-background: #ebe0e1;
+  --md-sys-color-surface: #201a1b;
+  --md-sys-color-on-surface: #ebe0e1;
+  --md-sys-color-surface-variant: #514347;
+  --md-sys-color-on-surface-variant: #d5c2c6;
+  --md-sys-color-outline: #9e8c90;
+  --md-sys-color-outline-variant: #514347;
   --md-sys-color-shadow: #000000;
   --md-sys-color-scrim: #000000;
-  --md-sys-color-inverse-surface: #e1e3df;
-  --md-sys-color-inverse-on-surface: #2e312f;
-  --md-sys-color-inverse-primary: #006c4f;
-  --md-sys-color-surface-dim: #111412;
-  --md-sys-color-surface-bright: #373a38;
-  --md-sys-color-surface-container-lowest: #0c0f0d;
-  --md-sys-color-surface-container-low: #191c1a;
-  --md-sys-color-surface-container: #1d201e;
-  --md-sys-color-surface-container-high: #272b29;
-  --md-sys-color-surface-container-highest: #323633
+  --md-sys-color-inverse-surface: #ebe0e1;
+  --md-sys-color-inverse-on-surface: #352f30;
+  --md-sys-color-inverse-primary: #984061;
+  --md-sys-color-surface-dim: #171213;
+  --md-sys-color-surface-bright: #3e3739;
+  --md-sys-color-surface-container-lowest: #120d0e;
+  --md-sys-color-surface-container-low: #201a1b;
+  --md-sys-color-surface-container: #241e1f;
+  --md-sys-color-surface-container-high: #2f282a;
+  --md-sys-color-surface-container-highest: #3a3334
 }
 
 @media (prefers-color-scheme: light) {
   :root {
-    --md-sys-color-primary: #006c4f;
+    --md-sys-color-primary: #984061;
     --md-sys-color-on-primary: #ffffff;
-    --md-sys-color-primary-container: #85f8cb;
-    --md-sys-color-on-primary-container: #002116;
-    --md-sys-color-secondary: #4c6358;
+    --md-sys-color-primary-container: #ffd9e2;
+    --md-sys-color-on-primary-container: #3e001d;
+    --md-sys-color-secondary: #74565f;
     --md-sys-color-on-secondary: #ffffff;
-    --md-sys-color-secondary-container: #cfe9da;
-    --md-sys-color-on-secondary-container: #092017;
-    --md-sys-color-tertiary: #3e6374;
+    --md-sys-color-secondary-container: #ffd9e2;
+    --md-sys-color-on-secondary-container: #2b151c;
+    --md-sys-color-tertiary: #7c5635;
     --md-sys-color-on-tertiary: #ffffff;
-    --md-sys-color-tertiary-container: #c2e8fd;
-    --md-sys-color-on-tertiary-container: #001f2a;
+    --md-sys-color-tertiary-container: #ffdcc1;
+    --md-sys-color-on-tertiary-container: #2e1500;
     --md-sys-color-error: #ba1a1a;
     --md-sys-color-on-error: #ffffff;
     --md-sys-color-error-container: #ffdad6;
     --md-sys-color-on-error-container: #410002;
-    --md-sys-color-background: #fbfdf9;
-    --md-sys-color-on-background: #191c1a;
-    --md-sys-color-surface: #fbfdf9;
-    --md-sys-color-on-surface: #191c1a;
-    --md-sys-color-surface-variant: #dbe5de;
-    --md-sys-color-on-surface-variant: #404944;
-    --md-sys-color-outline: #707974;
-    --md-sys-color-outline-variant: #bfc9c2;
+    --md-sys-color-background: #fffbff;
+    --md-sys-color-on-background: #201a1b;
+    --md-sys-color-surface: #fffbff;
+    --md-sys-color-on-surface: #201a1b;
+    --md-sys-color-surface-variant: #f2dde1;
+    --md-sys-color-on-surface-variant: #514347;
+    --md-sys-color-outline: #837377;
+    --md-sys-color-outline-variant: #d5c2c6;
     --md-sys-color-shadow: #000000;
     --md-sys-color-scrim: #000000;
-    --md-sys-color-inverse-surface: #2e312f;
-    --md-sys-color-inverse-on-surface: #eff1ee;
-    --md-sys-color-inverse-primary: #68dbb0;
-    --md-sys-color-surface-dim: #d8dbd7;
-    --md-sys-color-surface-bright: #f8faf6;
+    --md-sys-color-inverse-surface: #352f30;
+    --md-sys-color-inverse-on-surface: #faeeef;
+    --md-sys-color-inverse-primary: #ffb1c8;
+    --md-sys-color-surface-dim: #e3d7d9;
+    --md-sys-color-surface-bright: #fff8f8;
     --md-sys-color-surface-container-lowest: #ffffff;
-    --md-sys-color-surface-container-low: #f2f4f0;
-    --md-sys-color-surface-container: #eceeeb;
-    --md-sys-color-surface-container-high: #e7e9e5;
-    --md-sys-color-surface-container-highest: #e1e3df
+    --md-sys-color-surface-container-low: #fdf1f2;
+    --md-sys-color-surface-container: #f7ebec;
+    --md-sys-color-surface-container-high: #f1e5e7;
+    --md-sys-color-surface-container-highest: #ebe0e1
   }
 }
 :root[data-theme="light"] {
-  --md-sys-color-primary: #006c4f;
+  --md-sys-color-primary: #984061;
   --md-sys-color-on-primary: #ffffff;
-  --md-sys-color-primary-container: #85f8cb;
-  --md-sys-color-on-primary-container: #002116;
-  --md-sys-color-secondary: #4c6358;
+  --md-sys-color-primary-container: #ffd9e2;
+  --md-sys-color-on-primary-container: #3e001d;
+  --md-sys-color-secondary: #74565f;
   --md-sys-color-on-secondary: #ffffff;
-  --md-sys-color-secondary-container: #cfe9da;
-  --md-sys-color-on-secondary-container: #092017;
-  --md-sys-color-tertiary: #3e6374;
+  --md-sys-color-secondary-container: #ffd9e2;
+  --md-sys-color-on-secondary-container: #2b151c;
+  --md-sys-color-tertiary: #7c5635;
   --md-sys-color-on-tertiary: #ffffff;
-  --md-sys-color-tertiary-container: #c2e8fd;
-  --md-sys-color-on-tertiary-container: #001f2a;
+  --md-sys-color-tertiary-container: #ffdcc1;
+  --md-sys-color-on-tertiary-container: #2e1500;
   --md-sys-color-error: #ba1a1a;
   --md-sys-color-on-error: #ffffff;
   --md-sys-color-error-container: #ffdad6;
   --md-sys-color-on-error-container: #410002;
-  --md-sys-color-background: #fbfdf9;
-  --md-sys-color-on-background: #191c1a;
-  --md-sys-color-surface: #fbfdf9;
-  --md-sys-color-on-surface: #191c1a;
-  --md-sys-color-surface-variant: #dbe5de;
-  --md-sys-color-on-surface-variant: #404944;
-  --md-sys-color-outline: #707974;
-  --md-sys-color-outline-variant: #bfc9c2;
+  --md-sys-color-background: #fffbff;
+  --md-sys-color-on-background: #201a1b;
+  --md-sys-color-surface: #fffbff;
+  --md-sys-color-on-surface: #201a1b;
+  --md-sys-color-surface-variant: #f2dde1;
+  --md-sys-color-on-surface-variant: #514347;
+  --md-sys-color-outline: #837377;
+  --md-sys-color-outline-variant: #d5c2c6;
   --md-sys-color-shadow: #000000;
   --md-sys-color-scrim: #000000;
-  --md-sys-color-inverse-surface: #2e312f;
-  --md-sys-color-inverse-on-surface: #eff1ee;
-  --md-sys-color-inverse-primary: #68dbb0;
-  --md-sys-color-surface-dim: #d8dbd7;
-  --md-sys-color-surface-bright: #f8faf6;
+  --md-sys-color-inverse-surface: #352f30;
+  --md-sys-color-inverse-on-surface: #faeeef;
+  --md-sys-color-inverse-primary: #ffb1c8;
+  --md-sys-color-surface-dim: #e3d7d9;
+  --md-sys-color-surface-bright: #fff8f8;
   --md-sys-color-surface-container-lowest: #ffffff;
-  --md-sys-color-surface-container-low: #f2f4f0;
-  --md-sys-color-surface-container: #eceeeb;
-  --md-sys-color-surface-container-high: #e7e9e5;
-  --md-sys-color-surface-container-highest: #e1e3df
+  --md-sys-color-surface-container-low: #fdf1f2;
+  --md-sys-color-surface-container: #f7ebec;
+  --md-sys-color-surface-container-high: #f1e5e7;
+  --md-sys-color-surface-container-highest: #ebe0e1
 }
-</style><link rel="stylesheet" href="../assets/material-style.css"/></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os"</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><div class="table-cell" id="tsd-search" data-base=".."><div class="field"><label for="tsd-search-field" class="tsd-widget tsd-toolbar-icon search no-caption"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><use href="#icon-search"></use></svg></label><input type="text" id="tsd-search-field" aria-label="Search"/></div><div class="field"><div id="tsd-toolbar-links"></div></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="../index.html" class="title">huetiful-js</a></div><div class="table-cell" id="tsd-widgets"><a href="#" class="tsd-widget tsd-toolbar-icon menu no-caption" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><use href="#icon-menu"></use></svg></a></div></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><ul class="tsd-breadcrumb"><li><a href="../index.html">huetiful-js</a></li><li><a href="filterBy.html">filterBy</a></li></ul><h1>Module filterBy</h1></div><section class="tsd-panel-group tsd-index-group"><section class="tsd-panel tsd-index-panel"><h3 class="tsd-index-heading uppercase">Index</h3><section class="tsd-index-section"><h3 class="tsd-index-heading">Functions</h3><div class="tsd-index-list"><a href="../functions/filterBy.filterByContrast.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>filter<wbr/>By<wbr/>Contrast</span></a>
+</style><link rel="stylesheet" href="../assets/material-style.css"/></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os"</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><div class="table-cell" id="tsd-search" data-base=".."><div class="field"><label for="tsd-search-field" class="tsd-widget tsd-toolbar-icon search no-caption"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><use href="#icon-search"></use></svg></label><input type="text" id="tsd-search-field" aria-label="Search"/></div><div class="field"><div id="tsd-toolbar-links"></div></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="../index.html" class="title">huetiful-js</a></div><div class="table-cell" id="tsd-widgets"><a href="#" class="tsd-widget tsd-toolbar-icon menu no-caption" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><use href="#icon-menu"></use></svg></a></div></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><ul class="tsd-breadcrumb"><li><a href="../index.html">huetiful-js</a></li><li><a href="filterBy.html">filterBy</a></li></ul><h1>Module filterBy</h1></div><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/prjctimg/huetiful/blob/4e1763d/src/filterBy.ts#L1">filterBy.ts:1</a></li></ul></aside><section class="tsd-panel-group tsd-index-group"><section class="tsd-panel tsd-index-panel"><h3 class="tsd-index-heading uppercase">Index</h3><section class="tsd-index-section"><h3 class="tsd-index-heading">Functions</h3><div class="tsd-index-list"><a href="../functions/filterBy.filterByContrast.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>filter<wbr/>By<wbr/>Contrast</span></a>
 <a href="../functions/filterBy.filterByDistance.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>filter<wbr/>By<wbr/>Distance</span></a>
 <a href="../functions/filterBy.filterByHue.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>filter<wbr/>By<wbr/>Hue</span></a>
 <a href="../functions/filterBy.filterByLightness.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>filter<wbr/>By<wbr/>Lightness</span></a>

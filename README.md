@@ -7,7 +7,7 @@
 
 
   <p align='center'>
-    <img alt="logo" title="sine_cos_rotation" src="https://github.com/prjctimg/huetiful/blob/main/.github/logo.png">
+    <img alt="logo" title="sine_cos_rotation" src="./.github/logo.png">
     
   </p>
   <cite>*Image made by Rune.js using sine and cosine rotation with hueshifted colors</cite>
@@ -91,12 +91,12 @@ This project is fully open source! Contributions of any kind are greatly appreci
 
 ### References🔗
 
-[Coloring with code: A programmatic approach by George Francis](https://tympanus.net/codrops/2021/12/07/coloring-with-code-a-programmatic-approach-to-design/)
-[Programming Design Systems: Rune Madsen]()
-[Introducing Adaptive Color Palettes]()
-[Culori API docs](https://culorijs.org/api/)
+- [Coloring with code: A programmatic approach by George Francis](https://tympanus.net/codrops/2021/12/07/coloring-with-code-a-programmatic-approach-to-design/)
+- [Programming Design Systems: Rune Madsen]()
+- [Introducing Adaptive Color Palettes]()
+- [Culori API docs](https://culorijs.org/api/)
 
-<img alt="logo" title="huetiful-js" src="https://github.com/prjctimg/huetiful/blob/main/.github/logo_v1.png">
+<img alt="logo" title="huetiful-js" src="./.github/logo_v1.png">
 
 ##### License
 
