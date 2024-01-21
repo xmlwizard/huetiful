@@ -7,8 +7,8 @@
 
 
   <p align='center'>
-    <img alt="logo" title="sine_cos_rotation" src="./.github/logo.png">
-    
+    <img alt="logo" title="sine_cos_rotation" src="./logo.png">
+  
   </p>
   <cite>*Image made by Rune.js using sine and cosine rotation with hueshifted colors</cite>
 <h3 align='center'>huetiful-js</h3>
@@ -96,7 +96,7 @@ This project is fully open source! Contributions of any kind are greatly appreci
 - [Introducing Adaptive Color Palettes]()
 - [Culori API docs](https://culorijs.org/api/)
 
-<img alt="logo" title="huetiful-js" src="./.github/logo_v1.png">
+<img alt="logo" title="huetiful-js" src="./logo_v1.png">
 
 ##### License
 

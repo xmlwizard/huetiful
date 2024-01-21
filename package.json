@@ -31,7 +31,7 @@
   },
   "scripts": {
     "test": "jasmine",
-    "docs": "npx typedoc && cp -r ./.github/logo.png ./docs && cp -r ./.github/logo_v1.png ./docs && git add . && git commit -a -m 'Updated docs'",
+    "docs": "npx typedoc && cp -r ./.github/logo.png ./docs && cp -r ./.github/logo_v1.png ./docs && git add .",
     "code:build": "node build.cjs",
     "code:prepare": "npm run code:lint & npm run code:format & npm run code:build & npm run code:types & npm run docs",
     "code:types": "dts-bundle-generator -o ./lib/huetiful.d.ts ./src/index.ts",
@@ -105,7 +105,9 @@
     "CODE_OF_CONDUCT.md",
     "README.md",
     "CONTRIBUTING.md",
-    "LICENSE.md"
+    "LICENSE.md",
+    "logo.png",
+    "logo_v1.png"
   ],
   "repository": {
     "type": "git",
