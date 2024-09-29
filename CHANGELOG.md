@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.6](https://github.com/prjctimg/huetiful/compare/v3.0.5...v3.0.6) (2024-09-29)
+
+
+### Bug Fixes
+
+* added main field in package.json ([290db94](https://github.com/prjctimg/huetiful/commit/290db947ad1cd3fff9b2a6ac98256b2155dd2ea9))
+
 ## [3.0.5](https://github.com/prjctimg/huetiful/compare/v3.0.4...v3.0.5) (2024-09-19)
 
 

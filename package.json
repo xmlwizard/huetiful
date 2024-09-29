@@ -1,6 +1,6 @@
 {
   "name": "huetiful-js",
-  "version": "3.0.5",
+  "version": "3.0.6",
   "type": "module",
   "main": "./build/huetiful.esm.js",
   "browser": "./build/huetiful.min.js",
