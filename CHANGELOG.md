@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.0.6](https://github.com/prjctimg/huetiful/compare/v3.0.5...v3.0.6) (2025-01-29)
+
+
+### Bug Fixes
+
+* added main field in package.json ([290db94](https://github.com/prjctimg/huetiful/commit/290db947ad1cd3fff9b2a6ac98256b2155dd2ea9))
+* docs now working as expected. replaced algolia🤮 with lunr search. ([d3238f8](https://github.com/prjctimg/huetiful/commit/d3238f816a3ff5b8abedc9fc63463490ee80191b))
+* removed unnecessary type checks ([c640763](https://github.com/prjctimg/huetiful/commit/c640763b29075b3b8d90418b6a652cea3e69dfd5))
+* token parser no longer throws when invoked ([2275f53](https://github.com/prjctimg/huetiful/commit/2275f536d28e34117ce65752ccf42daf2b5efc7e))
+* token parser no longer throws when invoked ([ca06028](https://github.com/prjctimg/huetiful/commit/ca06028797ccfde6abd710f6297f7669304e05f3))
+
 ## [3.0.5](https://github.com/prjctimg/huetiful/compare/v3.0.4...v3.0.5) (2024-09-19)
 
 
