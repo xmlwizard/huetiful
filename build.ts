@@ -31,6 +31,6 @@ await build({
     target: "node",
     external: ["culori"],
     naming: "node/huetiful.esm.js",
-  }).then(logger("Node"));
+  }).then(logger("Node"))
 await $`bun tsup  --format=esm ./lib/index.ts --dts-only --outDir=./build`;
 await $`du -sh build/*`;

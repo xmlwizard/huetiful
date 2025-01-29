@@ -54,21 +54,19 @@ You can use this library when you want to do cool stuff with color and code 😎
 
 > The library uses ES modules and has no default export. If you wish to have a UMD variant (for some reason known to self), you can build from source. See [BUILD.md]() for more info
 
-```bash
+```sh
 npm i huetiful-js
 
-# Or if you have different taste...
+# Or if you have different package manager...
 
 # pnpm add huetiful-js
 # yarn add huetiful-js
 # bun add huetiful-js
 ```
 
-### Deno
+For Deno users, the library is available on JSR under a different alias:
 
-For Deno users, the library is available on JSR under a different alias
-
-```
+```sh
 deno add jsr:@algorist/color
 
 ```
@@ -83,11 +81,7 @@ These examples are only compatible with version 3.x. Versions prior to that are 
 
 A color can be defined using different types(arrays, strings, numbers, plain objects etc). Below are examples listing all the valid color tokens:
 
-:::tip
-
-For more information about color tokens [see this page](/docs/guides/color)
-
-:::
+[See more about the expected types of color tokens](https://huetiful-js/docs/guides/color)
 
 ```ts
 import { token } from "huetiful-js";
@@ -99,7 +93,7 @@ let colorObjectWithAlpha = { l: 50, c: 20, h: 40, alpha: 0.5, mode: "lch" };
 let arrColor = ["rgb", 120, 80, 50];
 let arrColorWithAlpha = ["rgb", 120, 80, 50, 0.1];
 
-var allColors = [
+let allColors = [
   cssNamedColor,
   colorNumber,
   colorObject,
@@ -109,9 +103,9 @@ var allColors = [
 ];
 
 let res = [];
-for (const color of allColors) {
+for (const color of allColors) 
   res.push(token(color));
-}
+
 
 console.log(res);
 

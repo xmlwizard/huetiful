@@ -576,25 +576,5 @@ export type ColorFamily =
   | "purple"
   | "gray";
 
-export type ComplimentaryOptions = {
-  /**
-   * Randomize the returned color. Useful if you wish to keep your palettes unique.
-   *
-   * Default is `false`
-   */
-  randomOffset?: boolean;
-
-  /**
-   * Array of two numbers in the range `[0,1]` which can be used to override the internal extremum defaults (min and max respectively) when generating a randomized complimentary color.
-   *
-   * Only works if `randomOffset` is `true`.
-   */
-  extremums?: [number?, number?];
-};
-
-export type Swatch<T extends string, V extends ScaleValues> = T extends Tailwind
-  ? V extends ScaleValues ? `${T}[${V}]`
-  : Array<`all[${V | "500"}]`>
-  : Array<T>;
 
 export type LightnessOptions = { amount?: number; darken?: boolean };

@@ -15,7 +15,7 @@ bun.lockb
 # Generated files
 **/.docusaurus
 **/.cache-loader
-
+./test.ts
 roadmap
 lodash-main
 lessons-learnt-from-my-first-open-source-project.md

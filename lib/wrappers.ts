@@ -31,11 +31,11 @@ import {
   luminance as _lmnce,
   alpha as _opac,
   achromatic,
-  complimentary,
+
   family,
   lightness,
   mc,
-  overtone,
+
   temp,
   token,
 } from "./utils.ts";
@@ -533,21 +533,6 @@ class Color {
     return this.#setThis(hueshift, options);
   }
 
-  /**
-     * Returns the complementary hue of the bound color. The function returns `'gray'` when you pass in an achromatic color.
-     * @param colorObj Optional boolean whether to return a custom object with the color `name` and `hueFamily` as keys or just the result color. Default is `false`.
-     * @example
-
-     * import { color } from "huetiful-js";
-     *
-     
-    console.log(color("pink").getComplimentaryHue(true))
-    // { hue: 'blue-green', color: '#97dfd7ff' }
-    
-     */
-  complimentary(): ColorToken {
-    return this.#setThis(complimentary);
-  }
 
   /**
    * Gets the hue family which a color belongs to with the overtone included (if it has one.).
@@ -561,7 +546,7 @@ class Color {
   console.log(color("#310000").family())
   // 'red'
    */
-  family(): BiasedHues & ColorFamily {
+  family(): BiasedHues & ColorFamily | { hue: BiasedHues & ColorFamily; bias: false | ColorFamily } {
     // @ts-ignore:
 
     return this.#setThis(family);
@@ -789,27 +774,6 @@ class Color {
     return this.#setThis(deficiency, options);
   }
 
-  /**
-   * Returns the name of the hue family which is biasing the passed in color.
-   *
-   * * If an achromatic color is passed in it returns the string `'gray'`
-   * * If the color has no bias it returns `false`.
-   *
-   * @example
-   *
-  console.log(color("fefefe").overtone())
-  // 'gray'
-   
-  console.log(color("cyan").overtone())
-  // 'green'
-   
-  console.log(color("blue").overtone())
-  // false
-   */
-  overtone(): ColorFamily {
-    // @ts-ignore:
-    return this.#setThis(overtone);
-  }
 
   /**
    *
