@@ -1,5 +1,24 @@
 # Changelog
 
+## [3.0.6](https://github.com/prjctimg/huetiful/compare/v3.0.5...v3.0.6) (2025-02-13)
+
+
+### Bug Fixes
+
+* added main field in package.json ([290db94](https://github.com/prjctimg/huetiful/commit/290db947ad1cd3fff9b2a6ac98256b2155dd2ea9))
+* alpha now fetches the alpha channel correctly from arrays ([4e49258](https://github.com/prjctimg/huetiful/commit/4e4925881b1dbf9b7e447fe1bfbdf67fda48bc94))
+* alpha() now sets the alpha value on arrays as expected ([d369a18](https://github.com/prjctimg/huetiful/commit/d369a18208dea9fa84b976b95c7a415eca765e79))
+* alpha() now sets the alpha value on arrays as expected ([a1ee1e6](https://github.com/prjctimg/huetiful/commit/a1ee1e609de8fcb68031e3f32c54b1283d677fa3))
+* docs now working as expected. replaced algolia🤮 with lunr search. ([d3238f8](https://github.com/prjctimg/huetiful/commit/d3238f816a3ff5b8abedc9fc63463490ee80191b))
+* family() now works as expected ([c2eaf67](https://github.com/prjctimg/huetiful/commit/c2eaf6715e825026ff1b8f306451e20f4185f409))
+* mc utility now returns expected chsnnel values. fixed bug in token parser which returned unconverted color tokens ([9e9a5e0](https://github.com/prjctimg/huetiful/commit/9e9a5e00f3ee60c75b7d3350136ce39395e10ba4))
+* palettes.ts now has passing tests.\n also made the palette wrappers case insensitive ([d06b430](https://github.com/prjctimg/huetiful/commit/d06b430d31157fe64e820284d2826e7a18ca8c52))
+* removed unnecessary type checks ([c640763](https://github.com/prjctimg/huetiful/commit/c640763b29075b3b8d90418b6a652cea3e69dfd5))
+* temp now works as expected ([c681cb6](https://github.com/prjctimg/huetiful/commit/c681cb6bfa18606f017263a8d880a162cbe86802))
+* temp now works as expected ([f2556a0](https://github.com/prjctimg/huetiful/commit/f2556a0128bca388c664cca3f3ca163458961c61))
+* token parser no longer throws when invoked ([2275f53](https://github.com/prjctimg/huetiful/commit/2275f536d28e34117ce65752ccf42daf2b5efc7e))
+* token parser no longer throws when invoked ([ca06028](https://github.com/prjctimg/huetiful/commit/ca06028797ccfde6abd710f6297f7669304e05f3))
+
 ## [3.0.5](https://github.com/prjctimg/huetiful/compare/v3.0.4...v3.0.5) (2024-09-19)
 
 
