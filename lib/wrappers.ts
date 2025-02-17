@@ -13,29 +13,30 @@ import { mcchn, or } from "./internal.ts";
 import { colors, nearest } from "./palettes.ts";
 import type {
   BiasedHues,
-  Collection, ColorFamily,
+  Collection,
+  ColorFamily,
   ColorOptions,
   ColorToken,
   DeficiencyOptions,
   DiscoverOptions,
-
   EarthtoneOptions,
   FilterByOptions,
   HueshiftOptions,
-  InterpolatorOptions, NearestOptions,
-  PairedSchemeOptions, SchemeOptions,
+  InterpolatorOptions,
+  NearestOptions,
+  PairedSchemeOptions,
+  SchemeOptions,
   SortByOptions,
-  StatsOptions, TokenOptions,
+  StatsOptions,
+  TokenOptions,
 } from "./types.d.ts";
 import {
-  luminance as _lmnce,
-  alpha as _opac,
   achromatic,
-
+  alpha as _opac,
   family,
   lightness,
+  luminance as _lmnce,
   mc,
-
   temp,
   token,
 } from "./utils.ts";
@@ -45,12 +46,12 @@ import {
 *
 :::tip
 
-The `ColorArray` class is also exposed via a wrapper function `load()`, 
+The `ColorArray` class is also exposed via a wrapper function `load()`,
 if you prefer not to explicitly instantiate a `new ColorArray`.
 
 :::
 * @example
-* 
+*
 * import { ColorArray } from 'huetiful-js';
 * let sample = ['blue', 'pink', 'yellow', 'green'];
 * let wrapper = new ColorArray(sample);
@@ -62,7 +63,6 @@ class ColorArray<C extends Collection, Options extends object> {
   colors: Collection;
   implicitReturn: boolean;
   /**
-   *
    * @param colors The collection of colors to bind.
    */
   constructor(colors: C, implicitReturn?: boolean) {
@@ -71,7 +71,10 @@ class ColorArray<C extends Collection, Options extends object> {
     return;
   }
 
-  #setThis(callback: (x: Collection, y: unknown) => Collection, options: unknown) {
+  #setThis(
+    callback: (x: Collection, y: unknown) => Collection,
+    options: unknown,
+  ) {
     this.colors = callback(this.colors, options);
     // @ts-ignore:
     return this.implicitReturn ? this.output() : this;
@@ -81,7 +84,7 @@ class ColorArray<C extends Collection, Options extends object> {
  * Returns the nearest color(s) in the bound collection against
  * the entire collection is returned with colors ordered in ascending order using the `differenceHyab` metric.
  * @example
- 
+
  * import { load,colors } from 'huetiful-js';
  *
  * let cols = colors('all', '500')
@@ -99,18 +102,18 @@ console.log(load(cols).nearest('blue', 3));
  * Interpolates the passed in colors and returns a collection of colors from the interpolation.
  *
  * :::tip
- * 
+ *
  * * To create a color scale for cyclic values pass `true` to the `closed` parameter in the `options` object.
  * * If `num` is 1 then a single color is returned from the resulting interpolation with the internal `t` value at `0.5` else a collection of the `num` of color scales is returned.
  * * If the collection of colors contains an achromatic color, the resulting samples may all be grayscale or pure black.
  * :::
- * 
+ *
  * @param  options Optional channel specific overrides.
  *
  * @example
  *
  * import { load } from 'huetiful-js';
-  
+
    *
    */
 
@@ -131,9 +134,9 @@ console.log(load(cols).nearest('blue', 3));
  * If no colors are valid for the palette types it returns an empty array for the palette results. It does not work with achromatic colors thus they're excluded from the resulting collection.
  * @param options
  * @example
- 
+
  * import { load } from 'huetiful-js';
-  
+
   let sample = [
   "#ffff00",
   "#00ffdc",
@@ -147,7 +150,7 @@ console.log(load(cols).nearest('blue', 3));
   "#3e0000",
   "#310000",
   ]
-  
+
   console.log(load(sample).discover({kind:'tetradic'}).output())
   // [ '#ffff00ff', '#00ffdcff', '#310000ff', '#720000ff' ]
    */
@@ -157,28 +160,28 @@ console.log(load(cols).nearest('blue', 3));
   }
 
   /**
-   * 
+   *
  * Filters a collection of colors using the specified `factor` as the criterion. The supported options are:
  * * `'contrast'` - Returns colors with the specified contrast range. The contrast is tested against a comparison color (the 'against' param) and the specified contrast ranges.
  * * `'lightness'` - Returns colors in the specified lightness range.
  * * `'chroma'` - Returns colors in the specified `saturation` or `chroma` range. The range is internally normalized to the supported ranges by the `colorspace` in use if it is out of range.
- 
+
  * * `'distance'` - Returns colors with the specified `distance` range. The `distance` is tested against a comparison color (the 'against' param) and the specified `distance` ranges. Uses the `differenceHyab` metric for calculating the distances.
  * * `luminance` - Returns colors in the specified luminance range.
  * * `'hue'` - Returns colors in the specified hue ranges between 0 to 360.
  *
  :::tip
- * 
+ *
  * For the `chroma` and `lightness` factors, the range is internally normalized to the supported ranges by the `colorspace` in use if it is out of range.
  * This means a value in the range `[0,1]` will return, for example if you pass `startLightness` as `0.3` it means `0.3 (or 30%)` of the channel's supported range.
  * But if the value of either start or end is above 1 AND the `colorspace` in use has an end range higher than 1 then the value is treated as is else the value is treated as if in the range `[0,100]` and will return the normalized value.
 :::
 *
- * 
+ *
  * @see https://culorijs.org/color-spaces/ For the expected ranges per colorspace.
  * Supports expression strings e.g `'>=0.5'`. The supported symbols are `== | === | != | !== | >= | <= | < | >`
 * @param options
-* @example 
+* @example
 
 import { filterBy } from 'huetiful-js';
   let sample = [
@@ -250,7 +253,6 @@ console.log(
    * If `relativeMean` is `false`, other factors that take the comparison color token as an overload will have this property's value as `null`.
    * * `colorspace` - The colorspace in which the factors were computed in. It has no effect on the `contrast` or `distance` factors (for now).
    *
-   *
    * * `extremums` - An array of the minimum and the maximum value (respectively) of the `factor`.
    * * `colors` - An array of color tokens that have the minimum and maximum `extremum` values respectively.
    * * `mean` - The average value for the `factor`.
@@ -272,7 +274,6 @@ console.log(
   //   return this.#setThis(distribute, options);
   // }
   /**
-   *
    * Returns the result value from the chain.
    * Can be omitted from invocation when `implicitReturn` is set to true.
    */
@@ -286,7 +287,7 @@ console.log(
  * Creates a lazy chain wrapper over a single color token that has all the functions that take a `ColorToken` as their first argument.
  *
  * @example
- * 
+ *
  import { Color } from 'huetiful-js'
 
  let wrapper = new Color('pink');
@@ -299,7 +300,7 @@ class Color {
    * @param c The color to bind.
    * @param options Optional overrides and properties for the bound color.
    */
-  constructor(c: ColorToken = 'cyan', options?: ColorOptions) {
+  constructor(c: ColorToken = "cyan", options?: ColorOptions) {
     const {
       alpha,
       colorspace,
@@ -334,7 +335,7 @@ class Color {
     this._saturation = or(
       saturation,
       // @ts-ignore:
-      mc(mcchn("c", this.colorspace))(c)
+      mc(mcchn("c", this.colorspace))(c),
     );
     // @ts-ignore:
     // light mode default is gray-100
@@ -355,26 +356,26 @@ class Color {
       // @ts-ignore:
       : callback(this._color);
     // @ts-ignore:
-    return this.implicitReturn ? this.output() : this as typeof callback
+    return this.implicitReturn ? this.output() : this as typeof callback;
   }
 
   /**
    *
    *
    * Sets/Gets the opacity or `alpha` channel of a color. If the `value` parameter is omitted it gets the bound color's `alpha` value.
-   * @param amount The value to apply to the opacity channel. The value is normalized to the range [0,1] 
+   * @param amount The value to apply to the opacity channel. The value is normalized to the range [0,1]
    * @example
  import { color } from 'huetiful-js';
-  
+
   // Getting the alpha
   console.log(color('#a1bd2f0d').alpha())
   // 0.050980392156862744
-   
+
   // Setting the alpha
   let myColor = color('b2c3f1')alpha(0.5)
-   
+
   console.log(myColor)
-   
+
   // #b2c3f180
    */
   alpha(amount?: string | number): ColorToken | number {
@@ -391,9 +392,9 @@ class Color {
     *
     * The supported symbols `*` `+` `-` `/`
    * @example
-   
+
    * import { color } from 'huetiful-js'
-   
+
   console.log(color('#a1bd2f').mc('rgb.g'))
   // 0.7411764705882353
    *
@@ -427,11 +428,11 @@ class Color {
    * Darkens the bound color by reducing the `lightness` channel by `amount` of the channel. For example `0.3` means reduce the lightness by `0.3` of the channel's current value.
    * @param amount The amount to darken with. The value is expected to be in the range `[0,1]`. Default is `0.1`.
    * @example
-  
+
    *  import { color } from "huetiful-js";
   console.log(color('blue').darken(0.3));
   //#464646
-  
+
    */
   lightness(amount?: number, darken = undefined): ColorToken {
     const params = [amount, darken];
@@ -439,7 +440,6 @@ class Color {
   }
 
   /**
-   *
    * Parses any recognizable color to the specified `kind` of `ColorToken` type.
    *
    * The `kind` option supports the following types as options:
@@ -458,7 +458,6 @@ class Color {
    * If the color token has an explicit `alpha` (specified by the `alpha` key in color objects and as the fourth and last number in a color array) the string will be 8 characters long instead of 6.
    *
    * * `'object'` - Parses the color token to a plain color object in the `mode` specified by the `targetMode` parameter in the `options` object.
-   *
    */
   token(options?: TokenOptions): ColorToken {
     return this.#setThis(token, options);
@@ -469,7 +468,7 @@ class Color {
    * Returns a randomized pastel variant of the bound color token. Preserves the bound `ColorToken` type.
    *
    * @example
-  
+
    * import { color } from 'huetiful-js';
    *
    * console.log(color("green").pastel())
@@ -491,7 +490,7 @@ class Color {
     * @example
 
     * import { color } from 'huetiful-js'
-    
+
     console.log(color("green").pairedScheme({hueStep:6,samples:4,tone:'dark'}))
     // [ '#008116ff', '#006945ff', '#184b4eff', '#007606ff' ]
      */
@@ -512,14 +511,14 @@ class Color {
    *
    *  The length of the resultant array is the number of samples (`num`) multiplied by 2 plus the base color passed in or `(num * 2) + 1`.
    *
-   * @param options The optional overrides object to customize the `HueShiftOptions` like easing function.  
+   * @param options The optional overrides object to customize the `HueShiftOptions` like easing function.
    * @example
   import { color } from "huetiful-js";
-    
+
     let hueShiftedPalette = color("#3e0000").hueShift({ iterations:1 });
-    
+
     console.log(hueShiftedPalette);
-    
+
     // [
       '#ffffe1', '#ffdca5',
       '#ca9a70', '#935c40',
@@ -533,20 +532,22 @@ class Color {
     return this.#setThis(hueshift, options);
   }
 
-
   /**
    * Gets the hue family which a color belongs to with the overtone included (if it has one.).
    *
    * For example `'red'` or `'blue-green'`. If the color is achromatic it returns the string `'gray'`.
    * @example
-  
+
    * import { color } from 'huetiful-js'
-  
-  
+
+
   console.log(color("#310000").family())
   // 'red'
    */
-  family(): BiasedHues & ColorFamily | { hue: BiasedHues & ColorFamily; bias: false | ColorFamily } {
+  family(): BiasedHues & ColorFamily | {
+    hue: BiasedHues & ColorFamily;
+    bias: false | ColorFamily;
+  } {
     // @ts-ignore:
 
     return this.#setThis(family);
@@ -559,7 +560,7 @@ class Color {
      * @param options
      *
      * @example
-     
+
      * import { color } from 'huetiful-js'
      *
      * let base = 'purple'
@@ -574,10 +575,10 @@ class Color {
       '#940049', '#99004b'
     ]
   }
-   
+
   console.log(color(base).earthtone({ iterations:8 }).output())
      * // call output() to only get results array
-   
+
   // [
       '#352a21', '#3e2825',
       '#4c2624', '#5f2028',
@@ -594,7 +595,7 @@ class Color {
    * Gets the contrast value between the bound and  comparison ( or `against`) color.
    * @param against The color to use for comparison. The default is `'black'`.
    * @example
-   
+
    * import { color } from 'huetiful-js'
    *
    * console.log(color('pink').contrast('yellow'))
@@ -613,7 +614,7 @@ class Color {
           dark: this?.background?.darkMode,
           // @ts-ignore:
         }[against?.toLowerCase()]
-        : against
+        : against,
     );
   }
 
@@ -630,12 +631,12 @@ class Color {
   let myColor = 'green';
   console.log(color(myColor).luminance());
   // 0.1543834296814607
-   
+
   console.log(color(myColor)._luminance);
   // 0.1543834296814607
-   
+
   console.log(color(myColor).luminance(0.5));
-   
+
      */
   luminance(amount?: number): number | ColorToken {
     return this.#setThis(_lmnce, amount);
@@ -670,50 +671,50 @@ class Color {
   /**
      *
    * Returns `true` if the bound color has hue or is grayscale elsColorspaces} [colorspace='lch'] The colorspace to use when checking if the `color` is grayscale or not.
-   * 
+   *
    * @example
-   
+
    * import { color } from "huetiful-js";
   import { formatHex8, interpolate, samples } from "culori"
-   
+
   var test = c => color(c).isAchromatic()
-   
-   
+
+
   test('pink')
   // false
-   
+
   let sample = [
     "#164100",
     "#ffff00",
     "#310000",
     'pink'
   ];
-   
+
   console.log(sample.map(test));
-   
+
   // [false, false, false,false]
-   
+
   test('gray')
-   
+
   // true
-   
-   
-   
+
+
+
   // we create an interpolation using black and white
   let f = interpolate(["black", "white"]);
-   
+
   //We then create 12 evenly spaced samples and pass them to f as the `t` param required by an interpolating function.
   // Lastly we convert the color to hex for brevity for this example (otherwise color objects work fine too.)
   let grays = samples(12).map((c) => formatHex8(f(c)));
   console.log(grays.map(test));
-   
+
   //
    [ false, true, true,
     true,  true, true,
     true,  true, true,
     true,  true, false
   ]
-   
+
    */
   achromatic(): boolean {
     return this.#setThis(achromatic);
@@ -722,23 +723,23 @@ class Color {
   /**
     * Returns a rough estimation of a color's temperature as either `'cool'` or `'warm'`.
    * @example
-   
+
    * import { color } from 'huetiful-js'
-   
+
   let sample = [
     "#00ffdc",
     "#00ff78",
     "#00c000"
   ];
-   
-   
-   
+
+
+
   console.log(color(sample[2]).temp());
   // 'warm'
-   
-   
+
+
    */
-  temp(): 'warm' | 'cool' {
+  temp(): "warm" | "cool" {
     // @ts-ignore:
     return this.#setThis(temp);
   }
@@ -756,15 +757,15 @@ class Color {
    * @param options
    *
    * @example
-   
+
    * import { color } from 'huetiful-js'
-    
+
     // Here we are simulating color blindness of tritanomaly or we can't see 'blue'.
     // We are passing in our color as an array of channel values in the mode "rgb". The severity is set to 0.1
     let tritanomaly = color(['rgb', 230, 100, 50, 0.5]).colorDeficiency('blue', 0.1)
     console.log(tritanomaly)
     // #dd663680
-    
+
     // Here we are simulating color blindness of tritanomaly or we can't see 'red'. The severity is not explicitly set so it defaults to 1
     let protanopia = color({ h: 20, w: 50, b: 30, mode: 'hwb' }).colorDeficiency('red')
     console.log(protanopia)
@@ -774,14 +775,13 @@ class Color {
     return this.#setThis(deficiency, options);
   }
 
-
   /**
    *
    * Returns a randomised classic color scheme from the bound color.
    * @example
    *
    import { color  } from 'huetiful-js'
-   
+
   console.log(color("#a1bd2f").scheme("triadic"))
   // [ '#a1bd2fff', '#00caffff', '#ff78c9ff' ]
    */
@@ -795,7 +795,7 @@ class Color {
    * @example
 
    * import { color } from 'huetiful-js'
-   
+
    * let myOutput = color(['rgb',200,34,65]).output()
    *
    * console.log(myOutput)
@@ -804,9 +804,8 @@ class Color {
    */
   output(): ColorToken {
     // @ts-ignore:
-    return this._color
+    return this._color;
   }
 }
 
-
-export { Color, ColorArray }
+export { Color, ColorArray };

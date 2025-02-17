@@ -22,6 +22,7 @@
     "isolatedModules": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "NodeNext",
-    "module": "NodeNext","allowImportingTsExtensions": true
+    "module": "NodeNext",
+    "allowImportingTsExtensions": true
   }
 }

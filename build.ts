@@ -2,19 +2,17 @@
 
 import { $, build } from "bun";
 
-
-
 const baseOptions = {
-  entrypoints: ["./lib/index.ts"],
-  outdir: "./build",
-  minify: {
-    whitespace: true,
-    syntax: true,
-    identifiers: true,
+    entrypoints: ["./lib/index.ts"],
+    outdir: "./build",
+    minify: {
+      whitespace: true,
+      syntax: true,
+      identifiers: true,
+    },
+    target: "browser",
+    format: "esm",
   },
-  target: "browser",
-  format: "esm",
-},
   logger = (env) => console.log(`${env} build complete🏗`);
 
 await $`sudo rm -rf build  && echo 'Cleaned build/ directory'`;
@@ -31,6 +29,6 @@ await build({
     target: "node",
     external: ["culori"],
     naming: "node/huetiful.esm.js",
-  }).then(logger("Node"))
+  }).then(logger("Node"));
 await $`bun tsup  --format=esm ./lib/index.ts --dts-only --outDir=./build`;
 await $`du -sh build/*`;

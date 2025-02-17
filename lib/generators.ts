@@ -1,6 +1,5 @@
 import {
   averageNumber,
-
   easingSmoothstep,
   fixupHueLonger,
   fixupHueShorter,
@@ -18,11 +17,13 @@ import {
   adjustHue,
   and,
   ci,
+  dstnce,
   ef,
   entries,
   eq,
   gt,
   gte,
+  hi,
   inRange,
   iterator,
   keys,
@@ -31,12 +32,11 @@ import {
   lte,
   max,
   mcchn,
-  min, dstnce,
+  min,
   not,
   or,
   rand,
   values,
-  hi,
 } from "./internal.ts";
 import { mc, token } from "./utils.ts";
 import type {
@@ -48,9 +48,7 @@ import type {
   InterpolatorOptions,
   PairedSchemeOptions,
   SchemeOptions,
-
 } from "./types.d.ts";
-
 
 /**
  * Creates a palette of hue shifted colors from the passed in color.
@@ -88,7 +86,8 @@ console.log(hueShiftedPalette);
 ]
  */
 function hueshift(
-  baseColor?: ColorToken, options: HueshiftOptions = {}
+  baseColor?: ColorToken,
+  options: HueshiftOptions = {},
 ): Collection {
   let { num, hueStep, minLightness, maxLightness, easingFn, tokenOptions } = or(
     options,
@@ -177,13 +176,13 @@ function pastel(
   baseColor?: ColorToken,
 ): ColorToken {
   const w = [
-    [0.3582677165354331, 0.996078431372549, 16538982.504333857],
-    [0.4395161290322581, 0.9725490196078431, 15694401.836627495],
-    [0.472, 0.9803921568627451, 15986490.838712374],
-    [0.3305785123966942, 0.9490196078431372, 14834893.772825705],
-    [0.2992125984251969, 0.996078431372549, 7446012.731034764],
-    [0.38818565400843885, 0.9294117647058824, 8247112.202928809],
-  ],
+      [0.3582677165354331, 0.996078431372549, 16538982.504333857],
+      [0.4395161290322581, 0.9725490196078431, 15694401.836627495],
+      [0.472, 0.9803921568627451, 15986490.838712374],
+      [0.3305785123966942, 0.9490196078431372, 14834893.772825705],
+      [0.2992125984251969, 0.996078431372549, 7446012.731034764],
+      [0.38818565400843885, 0.9294117647058824, 8247112.202928809],
+    ],
     [u, v] = [w.map((o) => o[0]), w.map((o) => o[1])];
 
   const t = {
@@ -203,8 +202,7 @@ function pastel(
     h: token(baseColor, { targetMode: "hsv", kind: "obj" }).h,
   });
 
-
-  return q
+  return q;
 }
 
 /**
@@ -212,7 +210,7 @@ function pastel(
  * The colors are then spline interpolated via white or black.
  *
  * :::tip
- * 
+ *
  * A negative `hueStep` will pick a color that is `hueStep` degrees behind the base color.
  *
  * :::
@@ -230,7 +228,7 @@ function pair(
   baseColor?: ColorToken,
   options?: PairedSchemeOptions,
 ): Collection | ColorToken {
-  let { num, via, hueStep, colorspace } = options as PairedSchemeOptions
+  let { num, via, hueStep, colorspace } = options as PairedSchemeOptions;
   via = or(via, "light");
   hueStep = or(hueStep, 5);
   colorspace = or(colorspace, "lch65");
@@ -249,7 +247,6 @@ function pair(
     dark: { l: 0, c: 0, h: 0, mode: colorspace },
     light: { l: 100, c: 0, h: 0, mode: colorspace },
   }[via as string];
-
 
   return interpolator([baseColor, tone, destinationColor], {
     colorspace: "lch",
@@ -282,7 +279,7 @@ function pair(
  *
  * @param baseColors The collection of colors to interpolate. If a color has a falsy channel for example black has an undefined hue channel some interpolation methods may return NaN affecting the final result or making all the colors in the resulting interpolation gray.
  * @param  options Optional overrides to customize parameters such as interpolation methods and per channel eeasings.
- * @returns 
+ * @returns
  *
  * @example
  *
@@ -306,7 +303,7 @@ function interpolator(
     {};
   // Set the internal defaults
   easingFn = or(easingFn, ef);
-  kind = or(kind, "basis")
+  kind = or(kind, "basis");
   num = or(num, 1);
   // @ts-ignore:
   hueFixup = hueFixup === "shorter" ? fixupHueShorter : fixupHueLonger;
@@ -402,7 +399,8 @@ function discover(
   colors: Collection = [],
   options: DiscoverOptions = {
     maxDistance: 0.0014,
-    minDistance: 0, kind: undefined
+    minDistance: 0,
+    kind: undefined,
   },
 ): Collection {
   //  Initialize and sanitize parameters
@@ -410,9 +408,7 @@ function discover(
     colorTokenKeys = keys(colors);
   const { kind, maxDistance, minDistance } = options || {};
 
-
   const palettes = {},
-
     customInRange = (c: string, d: string) =>
       inRange(dstnce(c)(d), minDistance, maxDistance),
     availableColors = (arg: string, obj = {}) =>
@@ -422,10 +418,10 @@ function discover(
       );
   // Create the classic palettes per valid color token  in the collection
 
-  for (const key of colorTokenKeys)
+  for (const key of colorTokenKeys) {
     // @ts-ignore:
     palettes[key] = scheme(colors[key], { kind: kind });
-
+  }
 
   // @ts-ignore:
   let currentPalette = [];
@@ -433,30 +429,29 @@ function discover(
     if (eq(typeof kind, "string")) {
       // @ts-ignore:
       palettes[key] = availableColors(key, palettes);
-      if (gt(currentPalette.length, 1))
+      if (gt(currentPalette.length, 1)) {
         // @ts-ignore:
         palettes[key] = palettes[key].filter((a, b) =>
           // @ts-ignore:
           not(customInRange(a, currentPalette[b]))
         );
+      }
 
       // @ts-ignore:
       currentPalette = palettes[key];
     } else {
       // if the color token value is an object, iterate through the available palette keys
       // @ts-ignore:
-      for (const paletteType of keys(palettes[key]))
+      for (const paletteType of keys(palettes[key])) {
         // @ts-ignore:
         palettes[key][paletteType] = availableColors(
           paletteType,
           // @ts-ignore:
           palettes[key],
         );
-
+      }
     }
   }
-
-
 
   // @ts-ignore:
   return palettes;
@@ -481,7 +476,6 @@ function earthtone(
 ): ColorToken | Array<ColorToken> {
   let { num, earthtones, colorspace, kind, closed } = options;
 
-
   earthtones = or(earthtones, "dark");
   const earthtoneSamples = {
     "light-gray": "#e5e5e5",
@@ -497,8 +491,6 @@ function earthtone(
   };
   // @ts-ignore:
   const currentEarthtone = earthtoneSamples[earthtones.toLowerCase()];
-
-
 
   return interpolator([currentEarthtone, baseColor], {
     colorspace: colorspace,
@@ -520,7 +512,7 @@ function earthtone(
  * * If it is falsy it will return a color map of all palettes.
  *
  * :::tip
- * 
+ *
  * The classic schemes are are:
  *
  * * `triadic` - Picks 3 colors 120 degrees apart.
@@ -531,9 +523,9 @@ function earthtone(
  * :::
  *
  * :::note
- * 
+ *
  * Note that the `num` parameter works on the `monochromatic` palette type only. Other schemes will return a constant amount of samples.
- * 
+ *
  * :::
  *
  * @param baseColor The color to create the palette(s) from.
@@ -549,11 +541,12 @@ console.log(scheme("triadic")("#a1bd2f"))
 function scheme(
   baseColor?: ColorToken,
   options: SchemeOptions = {
-    colorspace: 'lch',
-    kind: ['analogous'], easingFn: ef
+    colorspace: "lch",
+    kind: ["analogous"],
+    easingFn: ef,
   },
 ): Collection {
-  const { colorspace, kind, easingFn } = options || {}
+  const { colorspace, kind, easingFn } = options || {};
 
   // @ts-ignore:
   baseColor = token(baseColor, { targetMode: colorspace, kind: "obj" });
@@ -581,7 +574,6 @@ function scheme(
       tetradic: generateSteps(4, 90),
       complimentary: generateSteps(2, 180),
     },
-
     // @ts-ignore:
     callback = (kind) => {
       // // For each step return a  random value between lowMin && lowMax multipied by highMin && highMax and 0.9 of the step
@@ -589,8 +581,8 @@ function scheme(
       // // The map for steps to obtain the targeted palettes
 
       const [lightnessChan, chromaChan] = ["l", "c"].map((a) =>
-        mcchn(a, colorspace, false)
-      ),
+          mcchn(a, colorspace, false)
+        ),
         // @ts-ignore:
         palettes = [];
       // @ts-ignore:

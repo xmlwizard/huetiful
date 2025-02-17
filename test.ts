@@ -1,28 +1,20 @@
 // import { token } from './lib/utils.ts'
 
-import {
-	diverging,
-	sortBy,
-	filterBy,
-	stats,
-	colors,
-} from "./lib/index.ts";
-import {
-	achromatic,
-	family,
-	mc,
-	token,
-} from "./lib/utils.ts";
+import { colors, diverging, filterBy, sortBy, stats } from "./lib/index.ts";
+import { achromatic, family, mc, token } from "./lib/utils.ts";
 
 const cols = colors("all", "300").concat(
-	colors("all", "800"),
+  colors("all", "800"),
 );
 
 console.log(
-	filterBy(cols, {
-		factor: ["hue", "chroma"],
-		ranges: {
-			hue: [80, 200],
-		},
-	}),
+  filterBy(cols, {
+    factor: ["hue"],
+    ranges: {
+      hue: [">10", "<50"]
+    },factorObject:true
+  }),
 );
+
+
+// console.log(sortBy(cols,{factor:['hue']}))

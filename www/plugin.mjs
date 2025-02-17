@@ -25,10 +25,10 @@ export function load(app) {
 
       page.frontmatter = {
         // e.g add a title
-        title:
-          page.model.name.charAt(0).toUpperCase() + page.model.name.slice(1),
+        title: page.model.name.charAt(0).toUpperCase() +
+          page.model.name.slice(1),
         description: frontmatter[page.url.split(".")[0]],
       };
-    }
+    },
   );
 }

@@ -73,7 +73,10 @@ const config: Config = {
   },
 
   // Typedoc plugin
-  plugins: [["docusaurus-plugin-typedoc", typedocOptions], require.resolve('docusaurus-lunr-search')],
+  plugins: [
+    ["docusaurus-plugin-typedoc", typedocOptions],
+    require.resolve("docusaurus-lunr-search"),
+  ],
 
   // Presets (includes docs and other plugins)
   presets: [
@@ -130,7 +133,8 @@ const config: Config = {
     },
     footer: {
       style: "light",
-      copyright: `<a href='https://huetiful-js.com'><b class='pacifico'>huetiful-js</b></a> <br> <a href='https://deantarisai.com'>© ディーン・タリサイ 🌊</a>`,
+      copyright:
+        `<a href='https://huetiful-js.com'><b class='pacifico'>huetiful-js</b></a> <br> <a href='https://deantarisai.com'>© ディーン・タリサイ 🌊</a>`,
     },
     prism: {
       theme: prismThemes.shadesOfPurple,
@@ -138,7 +142,8 @@ const config: Config = {
     },
     announcementBar: {
       id: "banner",
-      content: `V3 is here! Smaller API footprint, better docs & more <a href='/guides/changes'>Learn more</a>`,
+      content:
+        `V3 is here! Smaller API footprint, better docs & more <a href='/guides/changes'>Learn more</a>`,
       backgroundColor: "#333",
       textColor: "#fff",
       isCloseable: true,

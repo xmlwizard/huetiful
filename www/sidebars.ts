@@ -26,7 +26,7 @@ const sidebars: SidebarsConfig = {
         image: "/img/logo.png",
       },
       items: readdirSync("./docs/guides", "utf-8").map(
-        (post) => `guides/${post.split(".")[0]}`
+        (post) => `guides/${post.split(".")[0]}`,
       ),
     },
 
@@ -55,8 +55,8 @@ const sidebars: SidebarsConfig = {
         .filter(
           (file) =>
             !["typedoc-sidebar.cjs", "module_index.mdx", "index.mdx"].some(
-              (f) => f === file
-            )
+              (f) => f === file,
+            ),
         )
         .map((post) => `api/${post.split(".")[0]}`),
     },
